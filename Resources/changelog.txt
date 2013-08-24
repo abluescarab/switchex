@@ -1,0 +1,462 @@
+6.0.1.0
+=======
+Date: 2013-07-31
+----------------------------------------------------------
+MINOR:
+   - Removed AmdWow
+   - Added OK and Cancel buttons to Options window
+   - Options window does not save changes unless OK is clicked
+
+FIX:
+   - Bug when setting WoW path through the Options dialog (e.g. "Error: C:\Program Files\World of WarcraftWow.exe")
+
+KNOWN ISSUES:
+   - Windows Explorer shell extensions can mess with the Open File/Folder dialogs
+   - Installing in Program Files can cause "Access denied" errors
+
+6.0.0.1
+=======
+Date: 2013-07-30
+----------------------------------------------------------
+MINOR:
+   - Only downloads readme file from new versions if there is a new version
+
+FIX:
+   - Loading the program if no registry key is found
+   - ADODB 12.0 error on 64-bit systems
+   - "No updates available" message
+
+6.0.0.0
+=======
+ Date: 2013-05-23
+----------------------------------------------------------
+MAJOR:
+   - Converted to C#
+   - Allows you to open WoW after setting server
+   - Creates realmlist.wtf on open if it does not exist
+   - Downloads install executable on update from SourceForge project
+   - Added changelog to update form
+   - Added an addons manager
+   - Removed splashscreen
+   - Removed the Switchex Browser
+   - Removed color options
+   - Removed "Patch Mirrors" menu
+   - Performance improvements
+   - Support for 64-bit installation
+
+MINOR:
+   - Changed button FlatStyles to Standard
+   - Changed some icons
+   - Automatically makes new backup after successful restore
+   - Added link to official WoW site
+   - Added link to Battle.net
+   - Removed hotkeys for websites on Help menu
+   - Allowed roaming profiles
+   - Detects enGB installation
+   - Changes cursor to hourglass when waiting
+   - Removed defunct servers
+   - Changed the Abluescarab Software website link under the Help menu to Abluescarab Designs
+   - Changed text of "Restart?" dialog
+   - Removed ability to show/hide columns
+   - Cleaned server list
+   - Changed from NSIS back to Inno Setup
+
+   frmMain:
+   - Changed "Help Websites" to "Guides and Wikis"
+   - Rearranged buttons
+   - Removed Server Lists > WoW-Private-Servers
+   - Removed Server Lists > Top.Org
+   - Changed Current Patch and Current Server to a toolstrip
+   - Changed dgvServers.SelectionMode to full row selection
+   - Allows opening multiple server links at once
+   - Changed window size
+   - Added File > Open Realmlist.wtf
+
+   frmOptions:
+   - Removed "Open links from the Switchex Browser" option
+   - Removed "Reset Window Size" button
+   - Added "Reset Settings" button
+
+   frmAbout:
+   - Change About window image
+
+FIX:
+   - Fixed update downloader
+
+5.1.1.1
+=======
+   Date: 2012-01-10
+----------------------------------------------------------
+FIX:
+   - Fixed updates not working without permissions
+
+5.1.1.0
+=======
+   Date: 2011-06-11
+----------------------------------------------------------
+MINOR:
+   - Window size now setting and is no longer in the database
+   - Column width(s) now setting and is no longer in the database
+   - List sorting now setting and is no longer in the database
+   - World of Warcraft and realmlist.wtf locations are now settings and are no longer in the database
+   - Removed Server List tab in the Options window
+   - Changed splash screen and About window picture
+   - Changed splash screen text color
+   - Updated help file
+
+5.1.0.0
+=======
+   Date: 2011-06-09
+----------------------------------------------------------
+MAJOR:
+   - Now automatically downloads and updates Switchex
+
+MINOR:
+   - Moved version.txt to http://abluescarab.users.sourceforge.net/updates/switchex/version.txt
+
+5.0.1.3
+=======
+   Date: 2011-06-06
+----------------------------------------------------------
+FIX:
+   - Fixed column order
+
+5.0.1.2
+=======
+   Date: 2011-06-06
+----------------------------------------------------------
+MINOR:
+   - Improved database connections and SQL statements
+
+FIX:
+   - Allows user to restore database without error
+
+SERVERS:
+   - Miscellaneous updates
+   - Changed EpicWoW to Epic Games Network
+   - Changed Gamewal to Wowwal
+   - Changed World of Chris to Zul'Aman (World of Chris)
+   - Removed EvolutionWoW
+   - Removed Insain Funserver
+   - Added DeviantWoW
+   - Added second World of Chris
+
+5.0.1.1
+=======
+   Date: 2011-06-05
+----------------------------------------------------------
+MINOR:
+   - When checking for updates, directs user to correct SourceForge version folder
+
+5.0.1.0
+=======
+   Date: 2011-06-05
+----------------------------------------------------------
+MINOR:
+   - Main window buttons wider
+   - Main window list smaller
+   - Current Patch and Current Realmlist wider
+   - "Current Realmlist" changed to "Current Server"
+   - Updated link to Abluescarab Software website
+   - Updated favicons
+   - Updated names in menu
+   - Added new patches
+
+FIX:
+   - Fixed adding new servers when using patch number
+
+CODE:
+   - Cleaned up code
+
+5.0.0.2
+=======
+   Date: 2011-04-10
+----------------------------------------------------------
+MINOR:
+   - Changed installation directory and Start Menu directory to sub-folders of Abluescarab Software
+
+5.0.0.1
+=======
+   Date: 2011-01-25
+----------------------------------------------------------
+FIX:
+   - "No updates available" message will appear when clicking the check for updates button
+
+5.0.0.0
+=======
+   Date: 2011-01-25
+----------------------------------------------------------
+MAJOR:
+   - Added column "Patch Number" and support for column in all windows
+   - Updated all server information
+   - Updated changelog format
+   - Added "Patch Mirrors" menu
+   - Added "Current Realmlist" information
+   - Added "Current Patch" information
+
+MINOR:
+   - Removed EchelonedWoW
+   - Removed Integral WoW
+   - Removed WoWTrance
+   - Removed WoWTorn
+   - Removed WoWolympc
+   - Removed Mystery Project
+   - Removed WoWGE
+   - Removed Remnants of Chaos
+   - Removed Underworld
+   - Removed WoW-Pwnage
+   - Added Divine Cataclysm
+   - Updated dialog boxes of Backup Database and Restore Database options
+   - Added "Show Patches" to right-click menu
+   - Changed "Show Paths" in right-click menu to "Show IPs"
+   - Moved Open website button
+   - Moved Open WoW button
+   - Moved Delete Server button
+   - Changed error text when trying to open nonexistant WoW.exe
+   - Moved Exit button
+   - Switchex opens in center screen
+   - Resized server list
+   - Opens realmlist.wtf file dialog if it doesn't exist when clicking "Set Server"
+   - Opens WoW.exe file dialog if it doesn't exist when clicking "Open WoW"
+   - Switchex Browser is off by default
+
+FIX:
+   - Update notification window under splashscreen
+
+4.0.1.7
+=======
+   Date: 2011-01-15
+----------------------------------------------------------
+MAJOR:
+   - Changed version.txt download location to SourceForge website
+   - Removed "InstallWoW.exe"
+
+FIX:
+   - Startup error
+
+4.0.1.6
+=======
+   Date: 2010-10-22
+----------------------------------------------------------
+MAJOR:
+   - Changed MIT license to GNU General Public License v3
+   - "Backup Server List" and "Restore Server List" are now "Backup Database" and "Restore Database"
+
+MINOR:
+   - Set new location for Wow.exe when clicking "Open WoW" if Wow.exe does not exist
+
+4.0.1.5
+=======
+   Date: 2010-08-10
+----------------------------------------------------------
+MAJOR:
+   - Organized Help Websites menu 
+
+MINOR:
+   - Added "WoWFaction" in the Server List
+
+FIX:
+   - Apostrophes (') can now be added into server information
+
+4.0.1.4
+=======
+   Date: 2010-07-28
+----------------------------------------------------------
+MAJOR:
+   - Removed option for the Switchex Toolbar under the Help menu
+
+MINOR:
+   - Changed icon under "Help" menu for the Switchex website
+
+4.0.1.3
+=======
+   Date: 2010-07-27
+----------------------------------------------------------
+MINOR:
+   - "No updates available" message will no longer appear when checking for updates at startup
+
+4.0.1.2
+=======
+   Date: 2010-07-26
+----------------------------------------------------------
+MINOR:
+   - Add Server and Edit Server windows are now fixed tool windows
+   - Updated icon
+
+4.0.1.1
+=======
+   Date: 2010-07-26
+----------------------------------------------------------
+MAJOR:
+   - Changed installer to NSIS (http://sourceforge.net/projects/nsis/)
+   - Changed "Check for Updates" msgbox to display current and new version when update is available
+
+MINOR:
+   - Updated server database
+
+4.0.1.0
+=======
+   Date: 2010-07-08
+----------------------------------------------------------
+MAJOR:
+   - Main window now resizable
+
+MINOR:
+   - Added option to reset window size in General tab of Options
+
+4.0.0.0
+=======
+   Date: 2010-05-26
+----------------------------------------------------------
+MAJOR:
+   - Updated to VB.NET 2010
+   - Added Options window (File > Options)
+   - Switchex is now portable
+   - From Options, can set colors of windows, buttons, etc.
+   - Now includes web browser (turn on and off from General tab in File > Options)
+   - "Server" column is now "Name" column
+   - "Server IP" column is now "Connection IP" column
+   - Updated the help file to CHM
+
+MINOR:
+   - Add Server window now allows for adding multiple servers before closing the window
+   - Server List Sort By options are now in File > Options > Server List tab and are carried between program sessions
+   - WoW Path and Realmlist Path buttons have been moved to General tab in Options
+   - Moved "Check for updates on startup" to General tab in Options screen
+   - Restore and Backup options have been moved to General tab in Options
+   - Empty Server List has been moved to Server List tab in Options
+
+3.3.2.0
+=======
+   Date: 2010-05-21
+----------------------------------------------------------
+MAJOR:
+   - Changed program executable icon
+   - Changed program icon
+
+MINOR:
+   - Changed remaining fonts
+   - Fixed window positions
+   - Changed text in splashscreen
+
+FIX:
+   - Textboxes filled with wrong information in Edit Server window
+   - Version.txt no longer stays in the install directory
+
+3.3.0.1
+=======
+   Date: 2010-05-17
+----------------------------------------------------------
+FIX:
+   - "Check for updates on startup" bug
+
+3.3.0.0
+=======
+   Date: 2010-05-17
+----------------------------------------------------------
+MAJOR:
+   - Added "Backup Current Realmlist.wtf" in File menu
+   - Added "Backup Current Server List" in File menu
+   - Added success messages and information messages
+   - Added Notes column
+   - Added option to check for updates at startup
+   - Right-click on list to turn on/off all columns except Names
+
+MINOR:
+   - Added support for Notes column in Add and Edit windows
+   - Changed Add Server and Edit Server windows
+   - Changed picture in About window
+   - Changed size of window
+
+3.2.0.0
+=======
+   Date: 2010-04-26
+----------------------------------------------------------
+MAJOR:
+   - Added "Check for Updates..." under Help
+   - Added "Restore Server List" under File
+   - Changed name of menu "WoW Help Websites" to "Help Websites"
+   - Changed name of menu "Top WoW Server Lists" to "Server Lists"
+   - Added icons to rest of menus and sub-menus
+   - Replaced most website icons with matching favicons
+
+MINOR:
+   - Changed image of Splash screen
+   - Removed "Killer Guides" under "WoW Help Websites"
+   - Replaced icon for "Restore Realmlist" under "File"
+
+FIX:
+   - Link for WoW-Professions under "Help Websites"
+   - Link for WoWWiki under "Help Websites"
+
+3.1.1.0
+=======
+   Date: 2010-02-27
+----------------------------------------------------------
+MAJOR:
+   - Added "Refresh Server List" under File menu (F5)
+   - Added "Visit the SourceForge Project" under Help menu (Ctrl+P)
+   - Added "Check for Updates..." under Help menu (F4)
+   - Add menu icons
+
+MINOR:
+   - "Success" message now pops up if Realmlist path, WoW path, or server are changed successfully
+   - Rearranged buttons
+   - Text under Help for the Changelog is now "Changelog..." instead of "Change Log..."
+
+3.1.0.0
+=======
+   Date: 2010-02-26
+----------------------------------------------------------
+MAJOR:
+   - Added Rating column
+   - Changed size of window
+   - Added icons to buttons
+   - Added Splash Screen
+   - Changed the name of the program from "SwitchEx" to "Switchex"
+
+MINOR:
+   - "Set WoW Path" button is now "WoW Path"
+   - "Set RealmList Path" button is now "Realmlist Path"
+
+3.0.0.0
+=======
+   Date: 2010-01-25
+----------------------------------------------------------
+MAJOR:
+   - Added Install SwitchEx Toolbar under Help
+   - Added server Website column and added all server websites
+   - Allowed editing of server names, IPs, and websites
+   - Updated to VB.NET (VB 2008)
+
+MINOR:
+   - Changed name of Server Path column to Server IP
+   - Changed size of the server grid to display 15 servers instead of 12
+   - Changed size of window
+
+2.1.0.0
+=======
+   Date: 2009-07-22
+----------------------------------------------------------
+MAJOR:
+   - Added changelog
+   - Added MIT License (LICENSE.txt)
+
+MINOR:
+   - Added shortcut to changelog under Help menu
+
+2.0.0.0
+=======
+   Date: 2009-07-22
+----------------------------------------------------------
+MAJOR:
+   - Added InstallWoW.exe to install World of Warcraft up to Wrath of the Lich King
+   - Added an option to empty server list (this cannot be undone)
+   - Doubled amount of realms in list
+   - Officially associated the program with Abluescarab Software
+   - Added an offline help file (press F1 in the program)
+   - Removed the version number from the title
+
+MINOR:
+   - Added a link to the Abluescarab Software webpage in the Help menu
+   - Added keyboard shortcuts to a few menu items

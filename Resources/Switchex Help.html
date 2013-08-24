@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Switchex Help</title>
+
+<style>
+	html {
+		height: 100%;
+	}
+	body {
+		font-family: Verdana;
+		font-size: 13px;
+		margin: 0 auto;
+		width: 800px;
+	}
+	h2 {
+		text-decoration: underline;
+	}
+	.top {
+		position: fixed;
+		bottom: 5px;
+	}
+	.left, .right {
+		padding: 5px;
+		margin: 0;
+	}
+	.left {
+		float: left;
+		width: 200px;
+		position: fixed;
+	}
+	.right {
+		float: right;
+		width: 580px;
+	}
+	.heading {
+		font-style: italic;
+		text-decoration: underline;
+	}
+</style>
+
+</head>
+<body>
+	<div class="left">
+		<ol>
+			<li><a href="#intro">Introduction</a></li>
+			<li><a href="#main">Main Window</a></li>
+			<li><a href="#options">Options Window</a></li>
+		</ol>
+		
+		<a href="#intro" class="top">Return to top</a>
+	</div>
+	
+	<div class="right">
+		<h2 id="intro">Introduction</h2>
+		Thanks for using <strong>Switchex - WoW Realm Switcher!</strong><br /><br />
+		Realm switching is made easy with Switchex. No need to edit your realmlist file manually and no programs that don't work correctly--just open Switchex and with the click of a button, you can be connected to your favorite server!<br /><br />
+		<strong>Features:</strong>
+		<ul>
+			<li>Add, edit, and delete servers</li>
+			<li>Include server names, IPs, websites, patch numbers, ratings, and notes</li>
+			<li>Open server websites and WoW from the main window</li>
+			<li>Check if the servers are online</li>
+			<li>Visit top server list websites</li>
+			<li>Visit WoW guides and wikis</li>
+			<li>Integrated check for updates features downloads files straight from the SourceForge project</li>
+			<li>Support for 32-bit and 64-bit WoW installations</li>
+			<li>Backup and restore your server database and realmlist.wtf file</li>
+			<li>Addon browser that displays name, description, author, version, and install date of your WoW addons</li>
+		</ul>
+		
+		<h2 id="main">Main Window</h2>
+		The main window is where you can control the main functions of Switchex and the server list.<br /><br />
+		<strong>Columns:</strong>
+		<ul>
+			<li><i>Online</i>: Shows whether the server is online or not. Is checked if online and unchecked if offline. Can be accessed by clicking the "Check Online" button.</li>
+			<li><i>Name</i>: The specified name of the server.</li>
+			<li><i>IP</i>: The IP of the server, used to connect to it.</li>
+			<li><i>Website</i>: The website of the server.</li>
+			<li><i>Patch</i>: The World of Warcraft patch the server uses.</li>
+			<li><i>Rating</i>: The rating you give the server.</li>
+			<li><i>Notes</i>: The notes you give the server.</li>
+		</ul>
+		<strong>Buttons:</strong>
+		<ul>
+			<li><i>Set Server</i>: Sets the server in your realmlist.wtf file.</li>
+			<li><i>Add Server</i>: Adds a server to the server list.</li>
+			<li><i>Edit Server</i>: Edits the selected server.</li>
+			<li><i>Delete Server</i>: Deletes the selected server with confirmation.</li>
+			<li><i>Open Website</i>: Open the selected server(s) website(s).</li>
+			<li><i>Open WoW</i>: Opens World of Warcraft.</li>
+			<li><i>Check Online</i>: Checks if the servers are online. (Note that servers can be behind a firewall and will not show as online.)</li>
+			<li><i>Addons</i>: Open the Addons browser.</li>
+			<li><i>Exit</i>: Exits Switchex.</li>
+		</ul>
+		<strong>Menus:</strong>
+		<ul>
+			<li><i>Server Lists</i>: Top server list websites.</li>
+			<li><i>Guides and Wikis</i>: Guides and wikis for WoW.</li>
+		</ul>
+		
+		<h2 id="options">Options Window</h2>
+		The Options window (new as of version 4) can be accessed by opening Switchex and going to <strong>File &gt; Options</strong>. It includes all of Switchex's options.<br /><br />
+		<span class="heading">Check for updates at startup</span><br />
+		If you check this box, Switchex will check for updates from the SourceForge project while the program is loading. If there are updates, it will display a popup asking if you want to download them.<br /><br />
+		<span class="heading">Open WoW after setting server</span><br />
+		Checking this option, Switchex will automatically open World of Warcraft after setting the server. If turned off, Switchex will display a success notification after setting the server.<br /><br />
+		<span class="heading">Installation</span><br />
+		If you select "32-bit", Switchex will open Wow.exe in your WoW install folder. If you select "64-bit", Wow-64.exe will open.<br /><br />
+		<span class="heading">Locations</span><br />
+		The WoW folder path is what location World of Warcraft is installed in. The Realmlist path is where realmlist.wtf is.<br /><br />
+		On first run, Switchex will automatically detect where your World of Warcraft installation and realmlist.wtf file is; however, there can still be problems, such as if World of Warcraft is not actually installed. For most users, the default locations should work fine.<br /><br />
+		<span class="heading">Miscellaneous</span><br />
+		The Empty Server List will clear your server list, deleting all the servers and their information. Emptying your server list will create a backup if one does not exist. The Reset Settings button will reset the program settings to default and restart Switchex.<br /><br />
+		<span class="heading">Backup</span><br />
+		There's always the chance that your server list or realmlist.wtf files can become corrupted when edited, and that's what these buttons are for. Backing up a file will create a copy of it with the file extension <i>.bak</i>.<br /><br />
+		It's recommended that you <strong>make a backup of your server list before you install a new version of Switchex</strong>!<br /><br />
+		<span class="heading">Restore</span><br />
+		Switchex also has a restore option alongside the backup option. A backup must first exist (with the file extension <i>.bak</i>) before a file can be restored.<br /><br />
+		
+		<h2 id="copyright">Abluescarab Designs Information</h2>
+		<a href="http://switchex.host56.com/">Visit the Switchex Website</a><br />
+		<a href="http://abluescarab.net16.net/">Visit the Abluescarab Designs Website</a><br />
+		<a href="http://sourceforge.net/projects/switchex">Visit the SourceForge Project</a><br /><br />
+		Copyright &copy; 2008-2013 Abluescarab Designs.<br /><br />
+		This software is under the <a href="http://www.gnu.org/licenses/gpl-3.0.txt">GNU General Public License Version 3</a>.
+	</div>
+</body>
+</html>
