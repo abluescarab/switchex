@@ -15,9 +15,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
-// DONE: change variables (e.g. gamePath, realmPath) to settings and call them using Properties.Settings
-// TODO: change Settings on Options close
-
 namespace Switchex {
 	public partial class frmMain: Form {
 		frmOptions frmOptions = new frmOptions();
@@ -346,15 +343,19 @@ namespace Switchex {
 
 		#region Help Menu
 		private void helpWebSwitchex_Click(object sender, EventArgs e) {
-			Process.Start("http://switchex.host56.com/");
+			Process.Start("http://switchex.abluescarab.us/");
 		}
 
 		private void helpWebAbluescarab_Click(object sender, EventArgs e) {
-			Process.Start("http://abluescarab.net16.net/");
+			Process.Start("http://www.abluescarab.us/");
 		}
 
 		private void helpWebSourceForge_Click(object sender, EventArgs e) {
 			Process.Start("http://sourceforge.net/projects/switchex/");
+		}
+
+		private void helpWebGitHub_Click(object sender, EventArgs e) {
+			Process.Start("http://github.com/abluescarab/Switchex/releases");
 		}
 
 		private void helpWebWow_Click(object sender, EventArgs e) {
@@ -409,7 +410,7 @@ namespace Switchex {
 				File.Delete(versionFile);
 			}
 
-			webClient.DownloadFile("http://abluescarab.users.sourceforge.net/updates/switchex/version.txt", versionFile);
+			webClient.DownloadFile("http://switchex.abluescarab.us/updates/version.txt", versionFile);
 
 			downloadVersion = File.ReadAllText(versionFile);
 
@@ -419,7 +420,8 @@ namespace Switchex {
 				}
 			}
 			else if(compareVersions(currentVersion, downloadVersion) == -1) {
-				webClient.DownloadFile("http://sourceforge.net/projects/switchex/files/" + downloadVersion + "/readme.txt/download", readmeFile);
+				Debug.Print("http://switchex.abluescarab.us/updates/" + downloadVersion + ".txt");
+				webClient.DownloadFile("http://switchex.abluescarab.us/updates/" + downloadVersion + ".txt", readmeFile);
 				frmConfirmUpdate.ShowDialog();
 			}
 

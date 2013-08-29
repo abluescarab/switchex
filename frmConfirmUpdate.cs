@@ -16,10 +16,13 @@ namespace Switchex {
 		}
 
 		private void frmConfirmUpdate_Load(object sender, EventArgs e) {
-			lblUpdate.Text = "Update available!\n\nCurrent: " + Application.ProductVersion + "\nUpdate: " + frmMain.downloadVersion + 
-				"\n\nDownload the update?";
+			string date = getLine(Application.StartupPath + "\\readme.txt", 3).Remove(0, 6);
 
-			txtReadme.Text = File.ReadAllText(Application.StartupPath + "\\readme.txt");
+			lblDate.Text = "Date: " + date;
+			lblCurrentVersion.Text = "Current: " + Application.ProductVersion;
+			lblUpdateVersion.Text = "Update: " + frmMain.downloadVersion;
+
+			txtReadme.Text = File.ReadAllText(Application.StartupPath + "\\readme.txt").Replace("\n", Environment.NewLine);
 		}
 
 		private void btnYes_Click(object sender, EventArgs e) {
@@ -30,6 +33,16 @@ namespace Switchex {
 
 		private void btnNo_Click(object sender, EventArgs e) {
 			Close();
+		}
+
+		string getLine(string filename, int line) {
+			using(var sr = new StreamReader(filename)) {
+				for(int i = 1; i < line; i++) {
+					sr.ReadLine();
+				}
+
+				return sr.ReadLine();
+			}
 		}
 	}
 }

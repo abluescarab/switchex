@@ -60,6 +60,7 @@
 			this.helpWebSwitchex = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpWebAbluescarab = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpWebSourceForge = new System.Windows.Forms.ToolStripMenuItem();
+			this.helpWebGitHub = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpWebWow = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpWebBattlenet = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpSep1 = new System.Windows.Forms.ToolStripSeparator();
@@ -127,20 +128,20 @@
 			this.fileOptions.Image = global::Switchex.Properties.Resources.application_edit;
 			this.fileOptions.Name = "fileOptions";
 			this.fileOptions.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-			this.fileOptions.Size = new System.Drawing.Size(190, 22);
+			this.fileOptions.Size = new System.Drawing.Size(188, 22);
 			this.fileOptions.Text = "Options";
 			this.fileOptions.Click += new System.EventHandler(this.fileOptions_Click);
 			// 
 			// fileSep1
 			// 
 			this.fileSep1.Name = "fileSep1";
-			this.fileSep1.Size = new System.Drawing.Size(187, 6);
+			this.fileSep1.Size = new System.Drawing.Size(185, 6);
 			// 
 			// fileGameFolder
 			// 
 			this.fileGameFolder.Image = global::Switchex.Properties.Resources.folder;
 			this.fileGameFolder.Name = "fileGameFolder";
-			this.fileGameFolder.Size = new System.Drawing.Size(190, 22);
+			this.fileGameFolder.Size = new System.Drawing.Size(188, 22);
 			this.fileGameFolder.Text = "Open Game Folder";
 			this.fileGameFolder.Click += new System.EventHandler(this.fileGameFolder_Click);
 			// 
@@ -148,7 +149,7 @@
 			// 
 			this.fileAddonsFolder.Image = global::Switchex.Properties.Resources.folder_add;
 			this.fileAddonsFolder.Name = "fileAddonsFolder";
-			this.fileAddonsFolder.Size = new System.Drawing.Size(190, 22);
+			this.fileAddonsFolder.Size = new System.Drawing.Size(188, 22);
 			this.fileAddonsFolder.Text = "Open Addons Folder";
 			this.fileAddonsFolder.Click += new System.EventHandler(this.fileAddonsFolder_Click);
 			// 
@@ -156,35 +157,35 @@
 			// 
 			this.fileOpenRealmlist.Image = global::Switchex.Properties.Resources.page_white_text;
 			this.fileOpenRealmlist.Name = "fileOpenRealmlist";
-			this.fileOpenRealmlist.Size = new System.Drawing.Size(190, 22);
+			this.fileOpenRealmlist.Size = new System.Drawing.Size(188, 22);
 			this.fileOpenRealmlist.Text = "Open Realmlist.wtf";
 			this.fileOpenRealmlist.Click += new System.EventHandler(this.fileOpenRealmlist_Click);
 			// 
 			// fileSep2
 			// 
 			this.fileSep2.Name = "fileSep2";
-			this.fileSep2.Size = new System.Drawing.Size(187, 6);
+			this.fileSep2.Size = new System.Drawing.Size(185, 6);
 			// 
 			// fileRefresh
 			// 
 			this.fileRefresh.Image = global::Switchex.Properties.Resources.arrow_refresh;
 			this.fileRefresh.Name = "fileRefresh";
 			this.fileRefresh.ShortcutKeys = System.Windows.Forms.Keys.F5;
-			this.fileRefresh.Size = new System.Drawing.Size(190, 22);
+			this.fileRefresh.Size = new System.Drawing.Size(188, 22);
 			this.fileRefresh.Text = "Refresh Server List";
 			this.fileRefresh.Click += new System.EventHandler(this.fileRefresh_Click);
 			// 
 			// fileSep3
 			// 
 			this.fileSep3.Name = "fileSep3";
-			this.fileSep3.Size = new System.Drawing.Size(187, 6);
+			this.fileSep3.Size = new System.Drawing.Size(185, 6);
 			// 
 			// fileExit
 			// 
 			this.fileExit.Image = global::Switchex.Properties.Resources.cross;
 			this.fileExit.Name = "fileExit";
 			this.fileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-			this.fileExit.Size = new System.Drawing.Size(190, 22);
+			this.fileExit.Size = new System.Drawing.Size(188, 22);
 			this.fileExit.Text = "Exit";
 			this.fileExit.Click += new System.EventHandler(this.fileExit_Click);
 			// 
@@ -202,14 +203,14 @@
             this.slSep3,
             this.slTop1000});
 			this.menuServerLists.Name = "menuServerLists";
-			this.menuServerLists.Size = new System.Drawing.Size(78, 20);
+			this.menuServerLists.Size = new System.Drawing.Size(77, 20);
 			this.menuServerLists.Text = "Server Lists";
 			// 
 			// slGamesTop100
 			// 
 			this.slGamesTop100.Image = ((System.Drawing.Image)(resources.GetObject("slGamesTop100.Image")));
 			this.slGamesTop100.Name = "slGamesTop100";
-			this.slGamesTop100.Size = new System.Drawing.Size(188, 22);
+			this.slGamesTop100.Size = new System.Drawing.Size(181, 22);
 			this.slGamesTop100.Text = "GamesTop100";
 			this.slGamesTop100.Click += new System.EventHandler(this.slGamesTop100_Click);
 			// 
@@ -217,7 +218,7 @@
 			// 
 			this.slTop100Arena.Image = global::Switchex.Properties.Resources.top100arena;
 			this.slTop100Arena.Name = "slTop100Arena";
-			this.slTop100Arena.Size = new System.Drawing.Size(188, 22);
+			this.slTop100Arena.Size = new System.Drawing.Size(181, 22);
 			this.slTop100Arena.Text = "Top 100 Arena";
 			this.slTop100Arena.Click += new System.EventHandler(this.slTop100Arena_Click);
 			// 
@@ -225,20 +226,20 @@
 			// 
 			this.slXtremeTop100.Image = ((System.Drawing.Image)(resources.GetObject("slXtremeTop100.Image")));
 			this.slXtremeTop100.Name = "slXtremeTop100";
-			this.slXtremeTop100.Size = new System.Drawing.Size(188, 22);
+			this.slXtremeTop100.Size = new System.Drawing.Size(181, 22);
 			this.slXtremeTop100.Text = "XtremeTop100";
 			this.slXtremeTop100.Click += new System.EventHandler(this.slXtremeTop100_Click);
 			// 
 			// slSep1
 			// 
 			this.slSep1.Name = "slSep1";
-			this.slSep1.Size = new System.Drawing.Size(185, 6);
+			this.slSep1.Size = new System.Drawing.Size(178, 6);
 			// 
 			// slGameSites200
 			// 
 			this.slGameSites200.Image = ((System.Drawing.Image)(resources.GetObject("slGameSites200.Image")));
 			this.slGameSites200.Name = "slGameSites200";
-			this.slGameSites200.Size = new System.Drawing.Size(188, 22);
+			this.slGameSites200.Size = new System.Drawing.Size(181, 22);
 			this.slGameSites200.Text = "GameSites200";
 			this.slGameSites200.Click += new System.EventHandler(this.slGameSites200_Click);
 			// 
@@ -246,33 +247,33 @@
 			// 
 			this.slMmorpgTL.Image = ((System.Drawing.Image)(resources.GetObject("slMmorpgTL.Image")));
 			this.slMmorpgTL.Name = "slMmorpgTL";
-			this.slMmorpgTL.Size = new System.Drawing.Size(188, 22);
+			this.slMmorpgTL.Size = new System.Drawing.Size(181, 22);
 			this.slMmorpgTL.Text = "MMORPG Top List";
 			this.slMmorpgTL.Click += new System.EventHandler(this.slMmorpgTL_Click);
 			// 
 			// slSep2
 			// 
 			this.slSep2.Name = "slSep2";
-			this.slSep2.Size = new System.Drawing.Size(185, 6);
+			this.slSep2.Size = new System.Drawing.Size(178, 6);
 			// 
 			// slWowServers
 			// 
 			this.slWowServers.Image = global::Switchex.Properties.Resources.topsitelist;
 			this.slWowServers.Name = "slWowServers";
-			this.slWowServers.Size = new System.Drawing.Size(188, 22);
+			this.slWowServers.Size = new System.Drawing.Size(181, 22);
 			this.slWowServers.Text = "#WoW Servers";
 			this.slWowServers.Click += new System.EventHandler(this.slWowServers_Click);
 			// 
 			// slSep3
 			// 
 			this.slSep3.Name = "slSep3";
-			this.slSep3.Size = new System.Drawing.Size(185, 6);
+			this.slSep3.Size = new System.Drawing.Size(178, 6);
 			// 
 			// slTop1000
 			// 
 			this.slTop1000.Image = global::Switchex.Properties.Resources.topsitelist;
 			this.slTop1000.Name = "slTop1000";
-			this.slTop1000.Size = new System.Drawing.Size(188, 22);
+			this.slTop1000.Size = new System.Drawing.Size(181, 22);
 			this.slTop1000.Text = "Top 1000 WoW Sites";
 			this.slTop1000.Click += new System.EventHandler(this.slTop1000_Click);
 			// 
@@ -289,14 +290,14 @@
             this.webWowProfessions,
             this.webWowPopular});
 			this.menuWebsites.Name = "menuWebsites";
-			this.menuWebsites.Size = new System.Drawing.Size(110, 20);
+			this.menuWebsites.Size = new System.Drawing.Size(109, 20);
 			this.menuWebsites.Text = "Guides and Wikis";
 			// 
 			// webWowWiki
 			// 
 			this.webWowWiki.Image = global::Switchex.Properties.Resources.wowwiki;
 			this.webWowWiki.Name = "webWowWiki";
-			this.webWowWiki.Size = new System.Drawing.Size(184, 22);
+			this.webWowWiki.Size = new System.Drawing.Size(183, 22);
 			this.webWowWiki.Text = "WoWWiki";
 			this.webWowWiki.Click += new System.EventHandler(this.webWowWiki_Click);
 			// 
@@ -304,7 +305,7 @@
 			// 
 			this.webThottbot.Image = global::Switchex.Properties.Resources.thottbot;
 			this.webThottbot.Name = "webThottbot";
-			this.webThottbot.Size = new System.Drawing.Size(184, 22);
+			this.webThottbot.Size = new System.Drawing.Size(183, 22);
 			this.webThottbot.Text = "Thottbot";
 			this.webThottbot.Click += new System.EventHandler(this.webThottbot_Click);
 			// 
@@ -312,20 +313,20 @@
 			// 
 			this.webZamWow.Image = global::Switchex.Properties.Resources.zamwow;
 			this.webZamWow.Name = "webZamWow";
-			this.webZamWow.Size = new System.Drawing.Size(184, 22);
+			this.webZamWow.Size = new System.Drawing.Size(183, 22);
 			this.webZamWow.Text = "ZAM WoW";
 			this.webZamWow.Click += new System.EventHandler(this.webZamWow_Click);
 			// 
 			// webSep1
 			// 
 			this.webSep1.Name = "webSep1";
-			this.webSep1.Size = new System.Drawing.Size(181, 6);
+			this.webSep1.Size = new System.Drawing.Size(180, 6);
 			// 
 			// webGotWarcraft
 			// 
 			this.webGotWarcraft.Image = global::Switchex.Properties.Resources.gotwarcraft;
 			this.webGotWarcraft.Name = "webGotWarcraft";
-			this.webGotWarcraft.Size = new System.Drawing.Size(184, 22);
+			this.webGotWarcraft.Size = new System.Drawing.Size(183, 22);
 			this.webGotWarcraft.Text = "GotWarcraft";
 			this.webGotWarcraft.Click += new System.EventHandler(this.webGotWarcraft_Click);
 			// 
@@ -333,7 +334,7 @@
 			// 
 			this.webFreeWarcraftGuides.Image = ((System.Drawing.Image)(resources.GetObject("webFreeWarcraftGuides.Image")));
 			this.webFreeWarcraftGuides.Name = "webFreeWarcraftGuides";
-			this.webFreeWarcraftGuides.Size = new System.Drawing.Size(184, 22);
+			this.webFreeWarcraftGuides.Size = new System.Drawing.Size(183, 22);
 			this.webFreeWarcraftGuides.Text = "Free Warcraft Guides";
 			this.webFreeWarcraftGuides.Click += new System.EventHandler(this.webFreeWarcraftGuides_Click);
 			// 
@@ -341,7 +342,7 @@
 			// 
 			this.webOnlineMultiplayer.Image = ((System.Drawing.Image)(resources.GetObject("webOnlineMultiplayer.Image")));
 			this.webOnlineMultiplayer.Name = "webOnlineMultiplayer";
-			this.webOnlineMultiplayer.Size = new System.Drawing.Size(184, 22);
+			this.webOnlineMultiplayer.Size = new System.Drawing.Size(183, 22);
 			this.webOnlineMultiplayer.Text = "Online-Multiplayer";
 			this.webOnlineMultiplayer.Click += new System.EventHandler(this.webOnlineMultiplayer_Click);
 			// 
@@ -349,7 +350,7 @@
 			// 
 			this.webWowProfessions.Image = global::Switchex.Properties.Resources.wowprofessions;
 			this.webWowProfessions.Name = "webWowProfessions";
-			this.webWowProfessions.Size = new System.Drawing.Size(184, 22);
+			this.webWowProfessions.Size = new System.Drawing.Size(183, 22);
 			this.webWowProfessions.Text = "WoW-Professions";
 			this.webWowProfessions.Click += new System.EventHandler(this.webWowProfessions_Click);
 			// 
@@ -357,7 +358,7 @@
 			// 
 			this.webWowPopular.Image = global::Switchex.Properties.Resources.wowpopular;
 			this.webWowPopular.Name = "webWowPopular";
-			this.webWowPopular.Size = new System.Drawing.Size(184, 22);
+			this.webWowPopular.Size = new System.Drawing.Size(183, 22);
 			this.webWowPopular.Text = "WoWPopular";
 			this.webWowPopular.Click += new System.EventHandler(this.webWowPopular_Click);
 			// 
@@ -367,6 +368,7 @@
             this.helpWebSwitchex,
             this.helpWebAbluescarab,
             this.helpWebSourceForge,
+            this.helpWebGitHub,
             this.helpWebWow,
             this.helpWebBattlenet,
             this.helpSep1,
@@ -383,7 +385,7 @@
 			// 
 			this.helpWebSwitchex.Image = global::Switchex.Properties.Resources.switchex;
 			this.helpWebSwitchex.Name = "helpWebSwitchex";
-			this.helpWebSwitchex.Size = new System.Drawing.Size(303, 22);
+			this.helpWebSwitchex.Size = new System.Drawing.Size(299, 22);
 			this.helpWebSwitchex.Text = "Visit the Switchex Website";
 			this.helpWebSwitchex.Click += new System.EventHandler(this.helpWebSwitchex_Click);
 			// 
@@ -391,7 +393,7 @@
 			// 
 			this.helpWebAbluescarab.Image = global::Switchex.Properties.Resources.page_world;
 			this.helpWebAbluescarab.Name = "helpWebAbluescarab";
-			this.helpWebAbluescarab.Size = new System.Drawing.Size(303, 22);
+			this.helpWebAbluescarab.Size = new System.Drawing.Size(299, 22);
 			this.helpWebAbluescarab.Text = "Visit the Abluescarab Designs Website";
 			this.helpWebAbluescarab.Click += new System.EventHandler(this.helpWebAbluescarab_Click);
 			// 
@@ -399,15 +401,24 @@
 			// 
 			this.helpWebSourceForge.Image = global::Switchex.Properties.Resources.sourceforge;
 			this.helpWebSourceForge.Name = "helpWebSourceForge";
-			this.helpWebSourceForge.Size = new System.Drawing.Size(303, 22);
+			this.helpWebSourceForge.Size = new System.Drawing.Size(299, 22);
 			this.helpWebSourceForge.Text = "Visit the SourceForge Project";
+			this.helpWebSourceForge.Visible = false;
 			this.helpWebSourceForge.Click += new System.EventHandler(this.helpWebSourceForge_Click);
+			// 
+			// helpWebGitHub
+			// 
+			this.helpWebGitHub.Image = global::Switchex.Properties.Resources.github;
+			this.helpWebGitHub.Name = "helpWebGitHub";
+			this.helpWebGitHub.Size = new System.Drawing.Size(299, 22);
+			this.helpWebGitHub.Text = "Visit the GitHub Project";
+			this.helpWebGitHub.Click += new System.EventHandler(this.helpWebGitHub_Click);
 			// 
 			// helpWebWow
 			// 
 			this.helpWebWow.Image = global::Switchex.Properties.Resources.zamwow;
 			this.helpWebWow.Name = "helpWebWow";
-			this.helpWebWow.Size = new System.Drawing.Size(303, 22);
+			this.helpWebWow.Size = new System.Drawing.Size(299, 22);
 			this.helpWebWow.Text = "Visit the World of Warcraft Official Website";
 			this.helpWebWow.Click += new System.EventHandler(this.helpWebWow_Click);
 			// 
@@ -415,21 +426,21 @@
 			// 
 			this.helpWebBattlenet.Image = global::Switchex.Properties.Resources.battlenet;
 			this.helpWebBattlenet.Name = "helpWebBattlenet";
-			this.helpWebBattlenet.Size = new System.Drawing.Size(303, 22);
+			this.helpWebBattlenet.Size = new System.Drawing.Size(299, 22);
 			this.helpWebBattlenet.Text = "Visit Battle.net";
 			this.helpWebBattlenet.Click += new System.EventHandler(this.helpWebBattlenet_Click);
 			// 
 			// helpSep1
 			// 
 			this.helpSep1.Name = "helpSep1";
-			this.helpSep1.Size = new System.Drawing.Size(300, 6);
+			this.helpSep1.Size = new System.Drawing.Size(296, 6);
 			// 
 			// helpUpdates
 			// 
 			this.helpUpdates.Image = global::Switchex.Properties.Resources.drive;
 			this.helpUpdates.Name = "helpUpdates";
 			this.helpUpdates.ShortcutKeys = System.Windows.Forms.Keys.F4;
-			this.helpUpdates.Size = new System.Drawing.Size(303, 22);
+			this.helpUpdates.Size = new System.Drawing.Size(299, 22);
 			this.helpUpdates.Text = "Check for Updates...";
 			this.helpUpdates.Click += new System.EventHandler(this.helpUpdates_Click);
 			// 
@@ -437,21 +448,21 @@
 			// 
 			this.helpChangelog.Image = global::Switchex.Properties.Resources.page_white_text;
 			this.helpChangelog.Name = "helpChangelog";
-			this.helpChangelog.Size = new System.Drawing.Size(303, 22);
+			this.helpChangelog.Size = new System.Drawing.Size(299, 22);
 			this.helpChangelog.Text = "Changelog...";
 			this.helpChangelog.Click += new System.EventHandler(this.helpChangelog_Click);
 			// 
 			// helpSep2
 			// 
 			this.helpSep2.Name = "helpSep2";
-			this.helpSep2.Size = new System.Drawing.Size(300, 6);
+			this.helpSep2.Size = new System.Drawing.Size(296, 6);
 			// 
 			// helpHelpTopics
 			// 
 			this.helpHelpTopics.Image = global::Switchex.Properties.Resources.help;
 			this.helpHelpTopics.Name = "helpHelpTopics";
 			this.helpHelpTopics.ShortcutKeys = System.Windows.Forms.Keys.F1;
-			this.helpHelpTopics.Size = new System.Drawing.Size(303, 22);
+			this.helpHelpTopics.Size = new System.Drawing.Size(299, 22);
 			this.helpHelpTopics.Text = "Help Topics";
 			this.helpHelpTopics.Click += new System.EventHandler(this.helpHelpTopics_Click);
 			// 
@@ -459,7 +470,7 @@
 			// 
 			this.helpAbout.Image = global::Switchex.Properties.Resources.information;
 			this.helpAbout.Name = "helpAbout";
-			this.helpAbout.Size = new System.Drawing.Size(303, 22);
+			this.helpAbout.Size = new System.Drawing.Size(299, 22);
 			this.helpAbout.Text = "About";
 			this.helpAbout.Click += new System.EventHandler(this.helpAbout_Click);
 			// 
@@ -495,7 +506,7 @@
 			this.ServerOnline.HeaderText = "Online";
 			this.ServerOnline.Name = "ServerOnline";
 			this.ServerOnline.ReadOnly = true;
-			this.ServerOnline.Width = 41;
+			this.ServerOnline.Width = 43;
 			// 
 			// ServerName
 			// 
@@ -526,7 +537,7 @@
 			this.ServerPatch.Name = "ServerPatch";
 			this.ServerPatch.ReadOnly = true;
 			this.ServerPatch.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-			this.ServerPatch.Width = 58;
+			this.ServerPatch.Width = 60;
 			// 
 			// ServerRating
 			// 
@@ -534,7 +545,7 @@
 			this.ServerRating.HeaderText = "Rating";
 			this.ServerRating.Name = "ServerRating";
 			this.ServerRating.ReadOnly = true;
-			this.ServerRating.Width = 61;
+			this.ServerRating.Width = 63;
 			// 
 			// ServerNotes
 			// 
@@ -670,7 +681,7 @@
 			// 
 			this.lblCurrentServer.Margin = new System.Windows.Forms.Padding(5, 3, 0, 2);
 			this.lblCurrentServer.Name = "lblCurrentServer";
-			this.lblCurrentServer.Size = new System.Drawing.Size(40, 17);
+			this.lblCurrentServer.Size = new System.Drawing.Size(39, 17);
 			this.lblCurrentServer.Text = "Server";
 			// 
 			// btnAddons
@@ -789,6 +800,7 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn ServerPatch;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ServerRating;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ServerNotes;
+		private System.Windows.Forms.ToolStripMenuItem helpWebGitHub;
 	}
 }
 

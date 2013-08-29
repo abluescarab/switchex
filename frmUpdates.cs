@@ -24,7 +24,7 @@ namespace Switchex {
 
 			WebClient webClient = new WebClient();
 			string downloadFile = "Switchex_" + frmMain.downloadVersion + "_SETUP.exe";
-
+			
 			if(!Directory.Exists(downloadLocation)) {
 				Directory.CreateDirectory(downloadLocation);
 			}
@@ -35,8 +35,7 @@ namespace Switchex {
 
 				webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(_DownloadFileCompleted);
 				webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(_DownloadProgressChanged);
-				webClient.DownloadFileAsync(new Uri("http://sourceforge.net/projects/switchex/files/" + frmMain.downloadVersion + "/Switchex_" + frmMain.downloadVersion +
-					"_SETUP.exe/download"), downloadLocation + "\\" + downloadFile);
+				webClient.DownloadFileAsync(new Uri("https://github.com/abluescarab/Switchex/releases/download/" + frmMain.downloadVersion + "/" + downloadFile), downloadLocation + "\\" + downloadFile);
 			}
 			else {
 				DialogResult result = MessageBox.Show("Downloaded file already exists. Close Switchex and install updates?", "Update", MessageBoxButtons.YesNo);
