@@ -23,7 +23,7 @@ namespace Switchex {
 			lblDownload.Text = "Downloaded: 0KB out of 0KB\nProgress: 0%";
 
 			WebClient webClient = new WebClient();
-			string downloadFile = "Switchex_" + frmMain.downloadVersion + "_SETUP.exe";
+			string downloadFile = "Switchex_" + Globals.downloadVersion + "_SETUP.exe";
 			
 			if(!Directory.Exists(downloadLocation)) {
 				Directory.CreateDirectory(downloadLocation);
@@ -35,14 +35,14 @@ namespace Switchex {
 
 				webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(_DownloadFileCompleted);
 				webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(_DownloadProgressChanged);
-				webClient.DownloadFileAsync(new Uri("https://github.com/abluescarab/Switchex/releases/download/" + frmMain.downloadVersion + "/" + downloadFile), downloadLocation + "\\" + downloadFile);
+				webClient.DownloadFileAsync(new Uri("https://github.com/abluescarab/Switchex/releases/download/" + Globals.downloadVersion + "/" + downloadFile), downloadLocation + "\\" + downloadFile);
 			}
 			else {
 				DialogResult result = MessageBox.Show("Downloaded file already exists. Close Switchex and install updates?", "Update", MessageBoxButtons.YesNo);
 
 				if(result == DialogResult.Yes) {
 					Application.Exit();
-					Process.Start(Application.StartupPath + "\\Switchex_" + frmMain.downloadVersion + "_SETUP.exe");
+					Process.Start(Application.StartupPath + "\\Switchex_" + Globals.downloadVersion + "_SETUP.exe");
 				}
 				else {
 					Close();
@@ -60,7 +60,7 @@ namespace Switchex {
 
 			if(result == DialogResult.Yes) {
 				Application.Exit();
-				Process.Start(Application.StartupPath + "\\Switchex_" + frmMain.downloadVersion + "_SETUP.exe");
+				Process.Start(Application.StartupPath + "\\Switchex_" + Globals.downloadVersion + "_SETUP.exe");
 			}
 		}
 
@@ -74,7 +74,7 @@ namespace Switchex {
 				lblDownload.Text = "Downloaded: " + downloadedKB + "KB out of " + totalKB + "KB\nProgress: " + e.ProgressPercentage.ToString() + "%";
 			}
 			catch(Exception ex) {
-				MessageBox.Show(ex.Message, "Error");
+				Globals.frmError.ShowDialog(ex);
 			}
 		}
 	}

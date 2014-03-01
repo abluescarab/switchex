@@ -9,122 +9,253 @@
 		height: 100%;
 	}
 	body {
-		font-family: Verdana;
-		font-size: 13px;
-		margin: 0 auto;
-		width: 800px;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 14px;
+		padding: 0;
+		margin: 0;
+		padding-bottom: 10px;
+	}
+	h1 {
+		padding: 0;
+		margin: 0;
 	}
 	h2 {
-		text-decoration: underline;
+		border-bottom: 1px solid black;
+		padding-bottom: 1px;
+	}
+	h3 {
+		font-size: 16px;
+		font-weight: normal;
+	}
+	li {
+		margin-bottom: 3px;
+	}
+	.note {
+		margin-left: 10px;
+		font-style: italic;
+		border-left: 2px solid #3366CC;
+		padding: 3px 0px 3px 10px;
+		font-size: 13px;
 	}
 	.top {
 		position: fixed;
-		bottom: 5px;
+		bottom: 10px;
+		right: 10px;
+		text-transform: uppercase;
+		text-decoration: none;
+		font-size: 15px !important;
 	}
-	.left, .right {
-		padding: 5px;
-		margin: 0;
-	}
-	.left {
-		float: left;
-		width: 200px;
-		position: fixed;
-	}
-	.right {
-		float: right;
-		width: 580px;
+	.inner {
+		width: 800px;
+		margin: 0 auto;
 	}
 	.heading {
 		font-style: italic;
-		text-decoration: underline;
+		border-bottom: 1px solid black;
+	}
+	/* Shamelessly ripped from stackoverflow.com */
+	.button {
+		/* Space */
+		padding: .1em .6em;
+		margin: .1em .1em;
+		white-space: nowrap;
+		font-size: 12px;
+		line-height: 1.4;
+		display: inline-block;
+		
+		/* Color */
+		border: 1px solid #ccc;
+		font-style: normal !important;
+		background-color: #F7F7F7;
+		text-shadow: 0 1px 0 #fff;
+		color: #333;
+		
+		/* Border radius */
+		border-radius: 3px;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+		
+		/* Box shadow */
+		-webkit-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), 0 0 0 2px #ffffff inset;
+		-moz-box-shadow:    0px 1px 0px rgba(0, 0, 0, 0.2), 0 0 0 2px #ffffff inset;
+		box-shadow:         0px 1px 0px rgba(0, 0, 0, 0.2), 0 0 0 2px #ffffff inset;
+	}
+	.menu {
+		/* Space */
+		padding: .2em .6em .1em .6em;
+		margin: .1em .1em;
+		white-space: nowrap;
+		font-size: 12px;
+		line-height: 1.4;
+		display: inline-block;
+		
+		/* Color */
+		border: 1px solid #ccc;
+		font-style: normal !important;
+		background-color: #F7F7F7;
+		text-shadow: 0 1px 0 #fff;
+		color: #333;
+	}
+	.check:before {
+		content: "\2713";
+		margin-right: 5px;
+	}
+	#header {
+		background-color: #eee;
+		width: 100%;
+		height: 75px;
+		line-height: 75px;
+	}
+	#container {
+		margin: 0 auto;
+		width: 800px;
 	}
 </style>
 
 </head>
 <body>
-	<div class="left">
+	<div id="header">
+		<div class="inner">
+			<h1>Switchex</h1>
+		</div>
+	</div>
+	
+	<div id="container">
+		<h2 id="contents">Table of Contents</h2>
 		<ol>
 			<li><a href="#intro">Introduction</a></li>
 			<li><a href="#main">Main Window</a></li>
 			<li><a href="#options">Options Window</a></li>
+			<li><a href="#profiles">Profile Window</a></li>
+			<li><a href="#statusbar">Statusbar</a></li>
+			<li><a href="#errors">Error Messages</a></li>
+			<li><a href="#copyright">Abluescarab Designs</a></li>
 		</ol>
 		
-		<a href="#intro" class="top">Return to top</a>
-	</div>
-	
-	<div class="right">
+		<a href="#contents" class="top button">&#x25B2; Return to top</a>
+		
 		<h2 id="intro">Introduction</h2>
-		Thanks for using <strong>Switchex - WoW Realm Switcher!</strong><br /><br />
-		Realm switching is made easy with Switchex. No need to edit your realmlist file manually and no programs that don't work correctly--just open Switchex and with the click of a button, you can be connected to your favorite server!<br /><br />
-		<strong>Features:</strong>
+		<p>Thanks for using <strong>Switchex - WoW Realm Switcher</strong>!</p>
+		<p>Realm switching is made easy with Switchex. No need to edit your realmlist file manually and no programs that don't work correctly&mdash;just open Switchex and with the click of a button, you can be connected to your favorite server!</p>
+		
+		<p><strong>Features:</strong></p>
 		<ul>
 			<li>Add, edit, and delete servers</li>
+			<li>Create profiles for all your World of Warcraft installations</li>
 			<li>Include server names, IPs, websites, patch numbers, ratings, and notes</li>
 			<li>Open server websites and WoW from the main window</li>
 			<li>Check if the servers are online</li>
 			<li>Visit top server list websites</li>
 			<li>Visit WoW guides and wikis</li>
-			<li>Integrated check for updates features downloads files straight from the SourceForge project</li>
+			<li>Integrated "Check for Updates" feature downloads files straight from the GitHub project</li>
 			<li>Support for 32-bit and 64-bit WoW installations</li>
 			<li>Backup and restore your server database and realmlist.wtf file</li>
-			<li>Addon browser that displays name, description, author, version, and install date of your WoW addons</li>
+			<li>Addon browser that allows you to manage your WoW addons</li>
 		</ul>
 		
 		<h2 id="main">Main Window</h2>
-		The main window is where you can control the main functions of Switchex and the server list.<br /><br />
-		<strong>Columns:</strong>
+		<p>The main window is where you can control the main functions of Switchex and the server list.</p>
+		<p>You can click the blue web link in the "Website" column to open that server's website.</p>
+		
+		<p><strong>Columns:</strong></p>
 		<ul>
-			<li><i>Online</i>: Shows whether the server is online or not. Is checked if online and unchecked if offline. Can be accessed by clicking the "Check Online" button.</li>
-			<li><i>Name</i>: The specified name of the server.</li>
-			<li><i>IP</i>: The IP of the server, used to connect to it.</li>
-			<li><i>Website</i>: The website of the server.</li>
-			<li><i>Patch</i>: The World of Warcraft patch the server uses.</li>
-			<li><i>Rating</i>: The rating you give the server.</li>
-			<li><i>Notes</i>: The notes you give the server.</li>
+			<li>
+				<em>Online</em>: Shows whether the server is online or not. Is checked if online and unchecked if offline. Can be accessed by clicking the <span class="button">Check Online</span> button.
+				
+				<p class="note">Servers can be behind a firewall and will not show as online. You can always open the server website to see if it's still in business.</p>
+			</li>
+			<li><em>Name</em>: The specified name of the server.</li>
+			<li><em>IP</em>: The IP of the server, used to connect to it.</li>
+			<li><em>Website</em>: The website of the server.</li>
+			<li><em>Patch</em>: The World of Warcraft patch the server uses.</li>
+			<li><em>Rating</em>: The rating you give the server.</li>
+			<li><em>Notes</em>: The notes you give the server.</li>
+			<li><em>Profile</em>: The profile that is currently assigned to the server.</li>
 		</ul>
-		<strong>Buttons:</strong>
+		
+		<p><strong>Buttons:</strong></p>
 		<ul>
-			<li><i>Set Server</i>: Sets the server in your realmlist.wtf file.</li>
-			<li><i>Add Server</i>: Adds a server to the server list.</li>
-			<li><i>Edit Server</i>: Edits the selected server.</li>
-			<li><i>Delete Server</i>: Deletes the selected server with confirmation.</li>
-			<li><i>Open Website</i>: Open the selected server(s) website(s).</li>
-			<li><i>Open WoW</i>: Opens World of Warcraft.</li>
-			<li><i>Check Online</i>: Checks if the servers are online. (Note that servers can be behind a firewall and will not show as online.)</li>
-			<li><i>Addons</i>: Open the Addons browser.</li>
-			<li><i>Exit</i>: Exits Switchex.</li>
+			<li>
+				<span class="button">Set Server</span>: Sets the server in your realmlist.wtf file.
+
+				<p class="note">If your WoW installation is in a folder like "Program Files", Switchex will ask for permission to write to the folder. Don't be alarmed if you see a User Account Control popup for "fileactions.exe".</p>
+			</li>
+			<li><span class="button">Add Server</span>: Adds a server to the server list.</li>
+			<li><span class="button">Edit Server</span>: Edits the selected server.</li>
+			<li><span class="button">Delete Server</span>: Deletes the selected server with confirmation.</li>
+			<li><span class="button">Open WoW</span>: Opens World of Warcraft.</li>
+			<li><span class="button">Check Online</span>: Checks if the servers are online.</li>
+			<li><span class="button">Addons</span>: Open the Addons browser.</li>
+			<li><span class="button">Exit</span>: Exits Switchex.</li>
 		</ul>
-		<strong>Menus:</strong>
+
+		<p class="note">The <span class="button">Set Server</span>, <span class="button">Open WoW</span>, and <span class="button">Addons</span> buttons will be unavailable if you are viewing all profiles at once.</p>
+		
+		<p><strong>Menus:</strong></p>
 		<ul>
-			<li><i>Server Lists</i>: Top server list websites.</li>
-			<li><i>Guides and Wikis</i>: Guides and wikis for WoW.</li>
+			<li><span class="menu">Server Lists</span>: Top server list websites.</li>
+			<li><span class="menu">Guides and Wikis</span>: Guides and wikis for WoW.</li>
 		</ul>
 		
 		<h2 id="options">Options Window</h2>
-		The Options window (new as of version 4) can be accessed by opening Switchex and going to <strong>File &gt; Options</strong>. It includes all of Switchex's options.<br /><br />
-		<span class="heading">Check for updates at startup</span><br />
-		If you check this box, Switchex will check for updates from the SourceForge project while the program is loading. If there are updates, it will display a popup asking if you want to download them.<br /><br />
-		<span class="heading">Open WoW after setting server</span><br />
-		Checking this option, Switchex will automatically open World of Warcraft after setting the server. If turned off, Switchex will display a success notification after setting the server.<br /><br />
-		<span class="heading">Installation</span><br />
-		If you select "32-bit", Switchex will open Wow.exe in your WoW install folder. If you select "64-bit", Wow-64.exe will open.<br /><br />
-		<span class="heading">Locations</span><br />
-		The WoW folder path is what location World of Warcraft is installed in. The Realmlist path is where realmlist.wtf is.<br /><br />
-		On first run, Switchex will automatically detect where your World of Warcraft installation and realmlist.wtf file is; however, there can still be problems, such as if World of Warcraft is not actually installed. For most users, the default locations should work fine.<br /><br />
-		<span class="heading">Miscellaneous</span><br />
-		The Empty Server List will clear your server list, deleting all the servers and their information. Emptying your server list will create a backup if one does not exist. The Reset Settings button will reset the program settings to default and restart Switchex.<br /><br />
-		<span class="heading">Backup</span><br />
-		There's always the chance that your server list or realmlist.wtf files can become corrupted when edited, and that's what these buttons are for. Backing up a file will create a copy of it with the file extension <i>.bak</i>.<br /><br />
-		It's recommended that you <strong>make a backup of your server list before you install a new version of Switchex</strong>!<br /><br />
-		<span class="heading">Restore</span><br />
-		Switchex also has a restore option alongside the backup option. A backup must first exist (with the file extension <i>.bak</i>) before a file can be restored.<br /><br />
+		<p>The Options window can be accessed by opening Switchex and going to <span class="menu">File &gt; Options</span> or by pressing <span class="button">Ctrl+O</span>. It includes all of Switchex's options.</p>
 		
-		<h2 id="copyright">Abluescarab Designs Information</h2>
-		<a href="http://switchex.host56.com/">Visit the Switchex Website</a><br />
-		<a href="http://abluescarab.net16.net/">Visit the Abluescarab Designs Website</a><br />
-		<a href="http://sourceforge.net/projects/switchex">Visit the SourceForge Project</a><br /><br />
-		Copyright &copy; 2008-2013 Abluescarab Designs.<br /><br />
-		This software is under the <a href="http://www.gnu.org/licenses/gpl-3.0.txt">GNU General Public License Version 3</a>.
+		<h3 class="heading">General</h3>
+		<h4 class="check">Check for updates at startup</h4>
+		<p>If you check this box, Switchex will check for updates from the GitHub project while the program is loading. If there are updates, it will display a popup asking if you want to download them.</p>
+		
+		<h4 class="check">Open WoW after setting server</h4>
+		<p>Checking this option, Switchex will automatically open World of Warcraft after setting the server. If turned off, Switchex will display a success notification after setting the server.</p>
+
+		<h4 class="check">Delete servers with their profile</h4>
+		<p>When this option is checked, servers will be deleted when the profile they are connected to is deleted. When not checked, they will be moved to the default profile.</p>
+		<p class="note">A default profile can be selected from the Manage Profiles window.</p>
+		
+		<h3 class="heading">Miscellaneous</h3>
+		<p>The <span class="button">Empty Server List</span> button will clear your server list, deleting all the servers and their information. Emptying your server list will create a backup if one does not exist. The <span class="button">Reset Settings</span> button will reset the program settings to default and restart Switchex.</p>
+		
+		<h3 class="heading">Backup</h3>
+		<p>There's always the chance that your server list or realmlist.wtf files can become corrupted when edited, and that's what these buttons are for. Backing up a file will create a copy of it with the file extension <em>.bak</em>.</p>
+		<p>It's recommended that you <strong>make a backup of your server list before you install a new version of Switchex</strong>!</p>
+		
+		<h3 class="heading">Restore</h3>
+		<p>Switchex also has a restore option alongside the backup option. A backup (with the file extension <em>.bak</em>) <strong>must exist</strong> before a file can be restored.</p>
+		<p class="note">If your WoW installation is in a folder like "Program Files", Switchex will ask for permission to write to the folder. Don't be alarmed if you see a User Account Control popup for "fileactions.exe".</p>
+		
+		<h2 id="profiles">Profiles Window</h2>
+		<p>You'll find a new window under <span class="menu">File &gt; Manage Profiles...</span>. Profiles are a new feature in version 7, allowing you to manage multiple WoW installations, all with their own servers! So you can have a profile for your Burning Crusade installation and your Wrath of the Lich King installation and keep their servers separate.</p>
+		<p>Click the <span class="button">Add New...</span> button to add a new profile (up to a maximum of 10). Click the <span class="button">Delete</span> button to delete a profile.</p>
+		<p>Selecting a profile using the dropdown will let you change its information. Once you make changes, click the <span class="button">Save</span> button to save them (but don't worry&mdash;if you have unsaved changes, it will ask before closing the window). You can also click the <span class="button">Clear Changes</span> button to clear the changes you've made to the profile before committing them.</p>
+		<p>There are also a couple of benefits to having a default profile: it will be the automatically-selected profile when adding new servers from the All profiles view and it will move servers from deleted profiles into the default profile.</p>
+
+		<h2 id="statusbar">Statusbar</h2>
+		<p>In the statusbar on the bottom of the Switchex main window, you'll also notice that there are a few displays:</p>
+		
+		<h3 class="heading">Profile</h3>
+		<p>Profiles can be changed on the main window in the statusbar. Click the box next to <span class="menu">Profile</span> and select the profile you want.</p>
+		<p class="note">"All" is a special option that shows you all servers from all profiles at once. It will disable the <span class="button">Set Server</span>, <span class="button">Open WoW</span>, and <span class="button">Addons</span> buttons and the <span class="menu">Open Game Folder</span>, <span class="menu">Open Addons Folder</span>, and <span class="menu">Open Realmlist.wtf</span> options in the <span class="menu">File</span> menu.</p>
+
+		<h3 class="heading">Location</h3>
+		<p>This will display the location of your current profile. So, for example, if you've set the location of your profile to <em>C:\Program Files\World of Warcraft</em>, it will show <em>Location: C:\Program Files\World of Warcraft</em>.</p>
+
+		<h3 class="heading">Patch</h3>
+		<p>The patch display will show what version of World of Warcraft is installed with your current profile.</p>
+
+		<h3 class="heading">Server</h3>
+		<p>The server display will show what server you currently have selected with your current profile.</p>
+		
+		<h2 id="errors">Error Messages</h2>
+		<p>Occasionally, you will receive an error message. I do my best to test the program, but I can't catch everything. You can help me! Error messages that are not supposed to happen at all will pop up in a box where you can copy them to your clipboard or send them straight to me via the <a href="http://www.abluescarab.us/contact.php">contact form on my website</a>.</p>
+		<p>If you send me the error messages you receive and what you were doing at the time, it will really help work the bugs out!</p>
+		
+		<h2 id="copyright">Abluescarab Designs</h2>
+		<ul>
+			<li><a href="http://switchex.abluescarab.us/">Visit the Switchex Website</a></li>
+			<li><a href="http://www.abluescarab.us/">Visit the Abluescarab Designs Website</a></li>
+			<li><a href="https://github.com/abluescarab/Switchex/releases">Visit the GitHub Project</a></li>
+		</ul>
+		<p>Copyright &copy; 2008-2014 Abluescarab Designs.</p>
+		<p>This software is under the <a href="http://www.gnu.org/licenses/gpl-3.0.txt">GNU General Public License Version 3</a>.</p>
 	</div>
 </body>
 </html>

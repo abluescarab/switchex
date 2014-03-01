@@ -23,9 +23,6 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			this.gpbLocations = new System.Windows.Forms.GroupBox();
-			this.btnRealmlistPath = new System.Windows.Forms.Button();
-			this.btnWowPath = new System.Windows.Forms.Button();
 			this.gpbMisc = new System.Windows.Forms.GroupBox();
 			this.btnResetSettings = new System.Windows.Forms.Button();
 			this.btnEmptyList = new System.Windows.Forms.Button();
@@ -38,73 +35,40 @@
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.dlgFile = new System.Windows.Forms.OpenFileDialog();
 			this.dlgFolder = new System.Windows.Forms.FolderBrowserDialog();
-			this.gpbInstall = new System.Windows.Forms.GroupBox();
-			this.rdo64bit = new System.Windows.Forms.RadioButton();
-			this.rdo32bit = new System.Windows.Forms.RadioButton();
 			this.chkOpenWow = new System.Windows.Forms.CheckBox();
 			this.chkUpdates = new System.Windows.Forms.CheckBox();
 			this.btnOK = new System.Windows.Forms.Button();
-			this.gpbLocations.SuspendLayout();
+			this.tlpOkCancel = new System.Windows.Forms.TableLayoutPanel();
+			this.gpbGeneral = new System.Windows.Forms.GroupBox();
+			this.chkDeleteServers = new System.Windows.Forms.CheckBox();
 			this.gpbMisc.SuspendLayout();
 			this.Restore.SuspendLayout();
 			this.gpbRestore.SuspendLayout();
-			this.gpbInstall.SuspendLayout();
+			this.tlpOkCancel.SuspendLayout();
+			this.gpbGeneral.SuspendLayout();
 			this.SuspendLayout();
-			// 
-			// gpbLocations
-			// 
-			this.gpbLocations.CausesValidation = false;
-			this.gpbLocations.Controls.Add(this.btnRealmlistPath);
-			this.gpbLocations.Controls.Add(this.btnWowPath);
-			this.gpbLocations.Location = new System.Drawing.Point(12, 107);
-			this.gpbLocations.Name = "gpbLocations";
-			this.gpbLocations.Size = new System.Drawing.Size(180, 81);
-			this.gpbLocations.TabIndex = 1;
-			this.gpbLocations.TabStop = false;
-			this.gpbLocations.Text = "Locations";
-			// 
-			// btnRealmlistPath
-			// 
-			this.btnRealmlistPath.Image = global::Switchex.Properties.Resources.wrench;
-			this.btnRealmlistPath.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnRealmlistPath.Location = new System.Drawing.Point(6, 50);
-			this.btnRealmlistPath.Name = "btnRealmlistPath";
-			this.btnRealmlistPath.Size = new System.Drawing.Size(168, 25);
-			this.btnRealmlistPath.TabIndex = 1;
-			this.btnRealmlistPath.Text = "Realmlist Path";
-			this.btnRealmlistPath.UseVisualStyleBackColor = true;
-			this.btnRealmlistPath.Click += new System.EventHandler(this.btnRealmlistPath_Click);
-			// 
-			// btnWowPath
-			// 
-			this.btnWowPath.Image = global::Switchex.Properties.Resources.wrench_orange;
-			this.btnWowPath.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnWowPath.Location = new System.Drawing.Point(6, 19);
-			this.btnWowPath.Name = "btnWowPath";
-			this.btnWowPath.Size = new System.Drawing.Size(168, 25);
-			this.btnWowPath.TabIndex = 0;
-			this.btnWowPath.Text = "WoW Folder Path";
-			this.btnWowPath.UseVisualStyleBackColor = true;
-			this.btnWowPath.Click += new System.EventHandler(this.btnWowPath_Click);
 			// 
 			// gpbMisc
 			// 
 			this.gpbMisc.Controls.Add(this.btnResetSettings);
 			this.gpbMisc.Controls.Add(this.btnEmptyList);
-			this.gpbMisc.Location = new System.Drawing.Point(12, 194);
+			this.gpbMisc.Location = new System.Drawing.Point(12, 106);
 			this.gpbMisc.Name = "gpbMisc";
-			this.gpbMisc.Size = new System.Drawing.Size(180, 81);
+			this.gpbMisc.Size = new System.Drawing.Size(185, 81);
 			this.gpbMisc.TabIndex = 2;
 			this.gpbMisc.TabStop = false;
 			this.gpbMisc.Text = "Miscellaneous";
 			// 
 			// btnResetSettings
 			// 
+			this.btnResetSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnResetSettings.Image = global::Switchex.Properties.Resources.arrow_undo;
 			this.btnResetSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.btnResetSettings.Location = new System.Drawing.Point(6, 50);
 			this.btnResetSettings.Name = "btnResetSettings";
-			this.btnResetSettings.Size = new System.Drawing.Size(168, 25);
+			this.btnResetSettings.Size = new System.Drawing.Size(173, 25);
 			this.btnResetSettings.TabIndex = 1;
 			this.btnResetSettings.Text = "Reset Settings";
 			this.btnResetSettings.UseVisualStyleBackColor = true;
@@ -112,11 +76,14 @@
 			// 
 			// btnEmptyList
 			// 
+			this.btnEmptyList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnEmptyList.Image = global::Switchex.Properties.Resources.table_delete;
 			this.btnEmptyList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.btnEmptyList.Location = new System.Drawing.Point(6, 19);
 			this.btnEmptyList.Name = "btnEmptyList";
-			this.btnEmptyList.Size = new System.Drawing.Size(168, 25);
+			this.btnEmptyList.Size = new System.Drawing.Size(173, 25);
 			this.btnEmptyList.TabIndex = 0;
 			this.btnEmptyList.Text = "Empty Server List";
 			this.btnEmptyList.UseVisualStyleBackColor = true;
@@ -126,20 +93,23 @@
 			// 
 			this.Restore.Controls.Add(this.btnBackupDatabase);
 			this.Restore.Controls.Add(this.btnBackupRealmlist);
-			this.Restore.Location = new System.Drawing.Point(199, 35);
+			this.Restore.Location = new System.Drawing.Point(203, 12);
 			this.Restore.Name = "Restore";
-			this.Restore.Size = new System.Drawing.Size(179, 81);
+			this.Restore.Size = new System.Drawing.Size(185, 81);
 			this.Restore.TabIndex = 3;
 			this.Restore.TabStop = false;
 			this.Restore.Text = "Backup";
 			// 
 			// btnBackupDatabase
 			// 
+			this.btnBackupDatabase.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnBackupDatabase.Image = global::Switchex.Properties.Resources.table_save;
 			this.btnBackupDatabase.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.btnBackupDatabase.Location = new System.Drawing.Point(6, 50);
 			this.btnBackupDatabase.Name = "btnBackupDatabase";
-			this.btnBackupDatabase.Size = new System.Drawing.Size(167, 25);
+			this.btnBackupDatabase.Size = new System.Drawing.Size(173, 25);
 			this.btnBackupDatabase.TabIndex = 1;
 			this.btnBackupDatabase.Text = "Backup Database";
 			this.btnBackupDatabase.UseVisualStyleBackColor = true;
@@ -147,11 +117,14 @@
 			// 
 			// btnBackupRealmlist
 			// 
+			this.btnBackupRealmlist.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnBackupRealmlist.Image = global::Switchex.Properties.Resources.page_save;
 			this.btnBackupRealmlist.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.btnBackupRealmlist.Location = new System.Drawing.Point(6, 19);
 			this.btnBackupRealmlist.Name = "btnBackupRealmlist";
-			this.btnBackupRealmlist.Size = new System.Drawing.Size(167, 25);
+			this.btnBackupRealmlist.Size = new System.Drawing.Size(173, 25);
 			this.btnBackupRealmlist.TabIndex = 0;
 			this.btnBackupRealmlist.Text = "Backup Realmlist.wtf";
 			this.btnBackupRealmlist.UseVisualStyleBackColor = true;
@@ -161,20 +134,23 @@
 			// 
 			this.gpbRestore.Controls.Add(this.btnRestoreDatabase);
 			this.gpbRestore.Controls.Add(this.btnRestoreRealmlist);
-			this.gpbRestore.Location = new System.Drawing.Point(198, 122);
+			this.gpbRestore.Location = new System.Drawing.Point(203, 93);
 			this.gpbRestore.Name = "gpbRestore";
-			this.gpbRestore.Size = new System.Drawing.Size(180, 81);
+			this.gpbRestore.Size = new System.Drawing.Size(185, 81);
 			this.gpbRestore.TabIndex = 4;
 			this.gpbRestore.TabStop = false;
 			this.gpbRestore.Text = "Restore";
 			// 
 			// btnRestoreDatabase
 			// 
+			this.btnRestoreDatabase.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnRestoreDatabase.Image = global::Switchex.Properties.Resources.database_table;
 			this.btnRestoreDatabase.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.btnRestoreDatabase.Location = new System.Drawing.Point(6, 50);
 			this.btnRestoreDatabase.Name = "btnRestoreDatabase";
-			this.btnRestoreDatabase.Size = new System.Drawing.Size(168, 25);
+			this.btnRestoreDatabase.Size = new System.Drawing.Size(173, 25);
 			this.btnRestoreDatabase.TabIndex = 1;
 			this.btnRestoreDatabase.Text = "Restore Database";
 			this.btnRestoreDatabase.UseVisualStyleBackColor = true;
@@ -182,11 +158,14 @@
 			// 
 			// btnRestoreRealmlist
 			// 
+			this.btnRestoreRealmlist.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnRestoreRealmlist.Image = global::Switchex.Properties.Resources.page_white_text;
 			this.btnRestoreRealmlist.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.btnRestoreRealmlist.Location = new System.Drawing.Point(6, 19);
 			this.btnRestoreRealmlist.Name = "btnRestoreRealmlist";
-			this.btnRestoreRealmlist.Size = new System.Drawing.Size(168, 25);
+			this.btnRestoreRealmlist.Size = new System.Drawing.Size(173, 25);
 			this.btnRestoreRealmlist.TabIndex = 0;
 			this.btnRestoreRealmlist.Text = "Restore Realmlist.wtf";
 			this.btnRestoreRealmlist.UseVisualStyleBackColor = true;
@@ -194,52 +173,22 @@
 			// 
 			// btnCancel
 			// 
+			this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.btnCancel.Location = new System.Drawing.Point(291, 244);
+			this.btnCancel.Location = new System.Drawing.Point(103, 3);
 			this.btnCancel.Name = "btnCancel";
-			this.btnCancel.Size = new System.Drawing.Size(87, 31);
+			this.btnCancel.Size = new System.Drawing.Size(94, 27);
 			this.btnCancel.TabIndex = 6;
 			this.btnCancel.Text = "Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
 			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
 			// 
-			// gpbInstall
-			// 
-			this.gpbInstall.Controls.Add(this.rdo64bit);
-			this.gpbInstall.Controls.Add(this.rdo32bit);
-			this.gpbInstall.Location = new System.Drawing.Point(12, 35);
-			this.gpbInstall.Name = "gpbInstall";
-			this.gpbInstall.Size = new System.Drawing.Size(180, 66);
-			this.gpbInstall.TabIndex = 0;
-			this.gpbInstall.TabStop = false;
-			this.gpbInstall.Text = "Installation ";
-			// 
-			// rdo64bit
-			// 
-			this.rdo64bit.AutoSize = true;
-			this.rdo64bit.Location = new System.Drawing.Point(6, 43);
-			this.rdo64bit.Name = "rdo64bit";
-			this.rdo64bit.Size = new System.Drawing.Size(120, 17);
-			this.rdo64bit.TabIndex = 1;
-			this.rdo64bit.TabStop = true;
-			this.rdo64bit.Text = "64-bit (Wow-64.exe)";
-			this.rdo64bit.UseVisualStyleBackColor = true;
-			// 
-			// rdo32bit
-			// 
-			this.rdo32bit.AutoSize = true;
-			this.rdo32bit.Location = new System.Drawing.Point(6, 19);
-			this.rdo32bit.Name = "rdo32bit";
-			this.rdo32bit.Size = new System.Drawing.Size(105, 17);
-			this.rdo32bit.TabIndex = 0;
-			this.rdo32bit.TabStop = true;
-			this.rdo32bit.Text = "32-bit (Wow.exe)";
-			this.rdo32bit.UseVisualStyleBackColor = true;
-			// 
 			// chkOpenWow
 			// 
 			this.chkOpenWow.AutoSize = true;
-			this.chkOpenWow.Location = new System.Drawing.Point(199, 12);
+			this.chkOpenWow.Location = new System.Drawing.Point(6, 42);
 			this.chkOpenWow.Name = "chkOpenWow";
 			this.chkOpenWow.Size = new System.Drawing.Size(173, 17);
 			this.chkOpenWow.TabIndex = 1;
@@ -251,7 +200,7 @@
 			this.chkUpdates.AutoSize = true;
 			this.chkUpdates.Checked = global::Switchex.Properties.Settings.Default.updatesOnStartup;
 			this.chkUpdates.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.chkUpdates.Location = new System.Drawing.Point(12, 12);
+			this.chkUpdates.Location = new System.Drawing.Point(6, 19);
 			this.chkUpdates.Name = "chkUpdates";
 			this.chkUpdates.Size = new System.Drawing.Size(160, 17);
 			this.chkUpdates.TabIndex = 0;
@@ -260,30 +209,66 @@
 			// 
 			// btnOK
 			// 
+			this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnOK.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.btnOK.Location = new System.Drawing.Point(198, 244);
+			this.btnOK.Location = new System.Drawing.Point(3, 3);
 			this.btnOK.Name = "btnOK";
-			this.btnOK.Size = new System.Drawing.Size(87, 31);
+			this.btnOK.Size = new System.Drawing.Size(94, 27);
 			this.btnOK.TabIndex = 7;
 			this.btnOK.Text = "OK";
 			this.btnOK.UseVisualStyleBackColor = true;
 			this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+			// 
+			// tlpOkCancel
+			// 
+			this.tlpOkCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.tlpOkCancel.ColumnCount = 2;
+			this.tlpOkCancel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tlpOkCancel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tlpOkCancel.Controls.Add(this.btnOK, 0, 0);
+			this.tlpOkCancel.Controls.Add(this.btnCancel, 1, 0);
+			this.tlpOkCancel.Location = new System.Drawing.Point(188, 193);
+			this.tlpOkCancel.Name = "tlpOkCancel";
+			this.tlpOkCancel.RowCount = 1;
+			this.tlpOkCancel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tlpOkCancel.Size = new System.Drawing.Size(200, 33);
+			this.tlpOkCancel.TabIndex = 8;
+			// 
+			// gpbGeneral
+			// 
+			this.gpbGeneral.Controls.Add(this.chkDeleteServers);
+			this.gpbGeneral.Controls.Add(this.chkUpdates);
+			this.gpbGeneral.Controls.Add(this.chkOpenWow);
+			this.gpbGeneral.Location = new System.Drawing.Point(12, 12);
+			this.gpbGeneral.Name = "gpbGeneral";
+			this.gpbGeneral.Size = new System.Drawing.Size(185, 88);
+			this.gpbGeneral.TabIndex = 9;
+			this.gpbGeneral.TabStop = false;
+			this.gpbGeneral.Text = "General";
+			// 
+			// chkDeleteServers
+			// 
+			this.chkDeleteServers.AutoSize = true;
+			this.chkDeleteServers.Location = new System.Drawing.Point(6, 65);
+			this.chkDeleteServers.Name = "chkDeleteServers";
+			this.chkDeleteServers.Size = new System.Drawing.Size(170, 17);
+			this.chkDeleteServers.TabIndex = 2;
+			this.chkDeleteServers.Text = "Delete servers with their profile";
+			this.chkDeleteServers.UseVisualStyleBackColor = true;
 			// 
 			// frmOptions
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.btnCancel;
-			this.ClientSize = new System.Drawing.Size(390, 287);
-			this.Controls.Add(this.btnOK);
-			this.Controls.Add(this.gpbInstall);
-			this.Controls.Add(this.btnCancel);
+			this.ClientSize = new System.Drawing.Size(400, 238);
+			this.Controls.Add(this.gpbGeneral);
+			this.Controls.Add(this.tlpOkCancel);
 			this.Controls.Add(this.gpbRestore);
 			this.Controls.Add(this.Restore);
-			this.Controls.Add(this.chkOpenWow);
 			this.Controls.Add(this.gpbMisc);
-			this.Controls.Add(this.gpbLocations);
-			this.Controls.Add(this.chkUpdates);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
@@ -293,23 +278,19 @@
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Options";
 			this.Load += new System.EventHandler(this.frmOptions_Load);
-			this.gpbLocations.ResumeLayout(false);
 			this.gpbMisc.ResumeLayout(false);
 			this.Restore.ResumeLayout(false);
 			this.gpbRestore.ResumeLayout(false);
-			this.gpbInstall.ResumeLayout(false);
-			this.gpbInstall.PerformLayout();
+			this.tlpOkCancel.ResumeLayout(false);
+			this.gpbGeneral.ResumeLayout(false);
+			this.gpbGeneral.PerformLayout();
 			this.ResumeLayout(false);
-			this.PerformLayout();
 
 		}
 
 		#endregion
 
 		private System.Windows.Forms.CheckBox chkUpdates;
-		private System.Windows.Forms.GroupBox gpbLocations;
-		private System.Windows.Forms.Button btnRealmlistPath;
-		private System.Windows.Forms.Button btnWowPath;
 		private System.Windows.Forms.GroupBox gpbMisc;
 		private System.Windows.Forms.CheckBox chkOpenWow;
 		private System.Windows.Forms.GroupBox Restore;
@@ -323,9 +304,9 @@
 		private System.Windows.Forms.OpenFileDialog dlgFile;
 		private System.Windows.Forms.Button btnResetSettings;
 		private System.Windows.Forms.FolderBrowserDialog dlgFolder;
-		private System.Windows.Forms.GroupBox gpbInstall;
-		private System.Windows.Forms.RadioButton rdo32bit;
-		private System.Windows.Forms.RadioButton rdo64bit;
 		private System.Windows.Forms.Button btnOK;
+		private System.Windows.Forms.TableLayoutPanel tlpOkCancel;
+		private System.Windows.Forms.GroupBox gpbGeneral;
+		private System.Windows.Forms.CheckBox chkDeleteServers;
 	}
 }

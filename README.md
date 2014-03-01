@@ -1,16 +1,16 @@
 Switchex
 ========
-
-Switchex is a World of Warcraft realm switcher that will directly change your realmlist.wtf to your favorite server. You can add, edit, and delete servers and visit help websites and top private server lists.
+Switchex is a World of Warcraft realm switcher that will directly change your realmlist.wtf file to your favorite server. Manage multiple WoW installations with their own selection of servers. Add, edit, and delete servers and visit help websites and top private server lists.
 
 # Features #
 * Set your server in realmlist.wtf easily
 * Add, edit, and delete servers
+* Create profiles for all your World of Warcraft installations
 * Empty the server list, restore it, or start from scratch
 * View your own patch number and current server
 * Open World of Warcraft straight from Switchex
 * Visit the websites of your favorite servers
-* Server rating system: specify any ratings you want, whether it be numbers, letters, stars, or otherwise
+* Rate your servers
 * Restore your realmlist.wtf file if it becomes damaged
 * Visit websites with top server lists voted by users like you
 * Visit WoW help, guide, and tips websites from the menu

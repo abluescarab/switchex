@@ -57,9 +57,9 @@
 			// 
 			this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.btnClose.Location = new System.Drawing.Point(377, 323);
+			this.btnClose.Location = new System.Drawing.Point(377, 329);
 			this.btnClose.Name = "btnClose";
-			this.btnClose.Size = new System.Drawing.Size(75, 31);
+			this.btnClose.Size = new System.Drawing.Size(75, 25);
 			this.btnClose.TabIndex = 8;
 			this.btnClose.Text = "Close";
 			this.btnClose.UseVisualStyleBackColor = true;
@@ -181,9 +181,9 @@
 			// 
 			// btnDelete
 			// 
-			this.btnDelete.Location = new System.Drawing.Point(231, 323);
+			this.btnDelete.Location = new System.Drawing.Point(231, 329);
 			this.btnDelete.Name = "btnDelete";
-			this.btnDelete.Size = new System.Drawing.Size(75, 31);
+			this.btnDelete.Size = new System.Drawing.Size(75, 25);
 			this.btnDelete.TabIndex = 7;
 			this.btnDelete.Text = "Delete";
 			this.btnDelete.UseVisualStyleBackColor = true;
@@ -214,6 +214,8 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "frmAddons";
+			this.ShowIcon = false;
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Addons";
 			this.Load += new System.EventHandler(this.frmAddons_Load);

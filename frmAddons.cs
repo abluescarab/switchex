@@ -12,66 +12,178 @@ using System.Windows.Forms;
 
 namespace Switchex {
 	public partial class frmAddons: Form {
-		public string addonFolder = Properties.Settings.Default.gamePath + "Interface\\AddOns\\";
+		bool _hasAddons = false;
+
+		bool HasAddons {
+			get { return _hasAddons; }
+			set {
+				if(_hasAddons != value) {
+					_hasAddons = value;
+				}
+
+				if(_hasAddons) {
+					if(lbAddons.DataSource == null) {
+						lbAddons.Items.Clear();
+					}
+
+					lbAddons.Enabled = true;
+
+					txtSearch.Enabled = true;
+				}
+				else {
+					lbAddons.Items.Clear();
+					lbAddons.Enabled = false;
+
+					txtSearch.ResetText();
+					txtSearch.Enabled = false;
+
+					foreach(Control c in Controls) {
+						if(c is TextBox && c.Text != "") {
+							c.ResetText();
+						}
+					}
+				}
+			}
+		}
+
+		List<string> addons = new List<string>();
+		List<string> filteredAddons = new List<string>();
+
+		public string addonFolder = null;
+
+		bool wasClicked = true;
 
 		public frmAddons() {
 			InitializeComponent();
 		}
 		
 		private void frmAddons_Load(object sender, EventArgs e) {
-			if(Properties.Settings.Default.gamePath != "") {
+			Profile profile = Globals.profiles.SingleOrDefault(item => item.ProfileName == Globals.currentProfile);
+			
+			// if the profile exists
+			if(profile != null) {
+				addonFolder = profile.ProfilePath + "\\Interface\\AddOns\\";
+
+				// if the addons folder exists in the profile
 				if(Directory.Exists(addonFolder)) {
-					if(Directory.GetDirectories(addonFolder).Length > 0) {
-						List<string> addons = new List<string>();
-
-						foreach(string dir in Directory.GetDirectories(addonFolder)) {
-							if(dir.IndexOf("Blizzard_") == -1) {
-								addons.Add(dir.Substring(dir.LastIndexOf('\\') + 1));
-							}
-						}
-
-						lbAddons.DataSource = addons;
-					}
-					else {
-						lbAddons.Items.Add("You do not have any addons.");
-					}
+					RefreshAddons();
 				}
+				// if the addons folder does not exist in the profile
 				else {
-					DialogResult result = MessageBox.Show("You do not have an addons folder. Would you like Switchex to create it?", "Addons", MessageBoxButtons.YesNo);
+					DialogResult result = MessageBox.Show("You do not have an addons folder. Would you like to create it?", "Addons", MessageBoxButtons.YesNo);
 
 					if(result == DialogResult.Yes) {
-						try {
-							Directory.CreateDirectory(addonFolder);
-						}
-						catch(Exception ex) {
-							MessageBox.Show(ex.Message, "Error");
-						}
-					}
+						string[] args = { addonFolder };
+						Globals.RunActionsExecutable(Globals.FileAction.CreateFolder, args);
 
-					lbAddons.Items.Add("You do not have any addons.");
+						HasAddons = false;
+						lbAddons.Items.Add("No addons installed.");
+					}
+					else {
+						HasAddons = false;
+						lbAddons.Items.Add("No addons folder detected.");
+					}
 				}
 			}
+			// if the profile does not exist or there is a problem
 			else {
-				lbAddons.Items.Add("The WoW path is not set.");
+				HasAddons = false;
+				lbAddons.Items.Add("Cannot find a WoW installation in your current profile.");
 			}
 		}
 
 		private void txtSearch_TextChanged(object sender, EventArgs e) {
-			if(lbAddons.FindString(txtSearch.Text) > -1) {
-				if(txtSearch.BackColor == Color.Red) {
+			if(txtSearch.TextLength > 0) {
+				filteredAddons = addons.Where(x => x.Length >= txtSearch.TextLength &&
+					x.Substring(0, txtSearch.TextLength) == txtSearch.Text).ToList();
+				lbAddons.DataSource = filteredAddons;
+
+				if(lbAddons.Items.Count == 0) {
+					txtSearch.BackColor = Color.LightYellow;
+				}
+				else {
 					txtSearch.BackColor = Color.FromName("Window");
 				}
-
-				lbAddons.SelectedIndex = lbAddons.FindString(txtSearch.Text);
 			}
 			else {
-				txtSearch.BackColor = Color.Red;
+				txtSearch.BackColor = Color.FromName("Window");
+				lbAddons.DataSource = addons;
 			}
 		}
 
 		private void lbAddons_SelectedIndexChanged(object sender, EventArgs e) {
+			if(wasClicked) {
+				LoadSelectedAddon();
+			}
+		}
+
+		private void btnDelete_Click(object sender, EventArgs e) {
+			DialogResult result = MessageBox.Show("Are you sure you want to delete " + lbAddons.SelectedItem + " from your addons folder?", "Delete", MessageBoxButtons.YesNo);
+
+			if(result == DialogResult.Yes) {
+				try {
+					string name = lbAddons.SelectedItem.ToString();
+					string[] args = { addonFolder + name };
+
+					if(Globals.RunActionsExecutable(Globals.FileAction.DeleteFolder, args) == 0) {
+						RefreshAddons();
+						MessageBox.Show("Deletion of " + name + " successful.", "Success");
+					}
+					else {
+						MessageBox.Show("Could not delete folder.", "Error");
+					}
+				}
+				catch(Exception ex) {
+					Globals.frmError.ShowDialog(ex);
+				}
+			}
+		}
+
+		private void btnClose_Click(object sender, EventArgs e) {
+			Close();
+		}
+
+		/// <summary>
+		/// Refresh the addons list.
+		/// </summary>
+		private void RefreshAddons() {
+			wasClicked = false;
+			lbAddons.DataSource = null;
+			lbAddons.Items.Clear();
+			addons.Clear();
+
+			if(Directory.GetDirectories(addonFolder).Length > 0) {
+				foreach(string dir in Directory.GetDirectories(addonFolder)) {
+					if(dir.IndexOf("Blizzard_") == -1) {
+						addons.Add(dir.Substring(dir.LastIndexOf('\\') + 1));
+					}
+				}
+
+				lbAddons.DataSource = addons;
+
+				if(!HasAddons) {
+					HasAddons = true;
+				}
+
+				LoadSelectedAddon();
+			}
+			else {
+				if(HasAddons) {
+					HasAddons = false;
+				}
+
+				lbAddons.Items.Add("No addons installed.");
+			}
+
+			wasClicked = true;
+		}
+
+		/// <summary>
+		/// Load information for the selected addon.
+		/// </summary>
+		private void LoadSelectedAddon() {
 			Cursor = Cursors.WaitCursor;
-			
+
 			string name = lbAddons.SelectedItem.ToString();
 			string selectedAddon = addonFolder + name + "\\" + name + ".toc";
 
@@ -90,7 +202,7 @@ namespace Switchex {
 				else {
 					txtDescription.Text = "No description specified.";
 				}
-			
+
 				string author = Array.Find(addonText, element => element.StartsWith("## Author:"));
 
 				if(author != null) {
@@ -127,24 +239,6 @@ namespace Switchex {
 			}
 
 			Cursor = Cursors.Default;
-		}
-
-		private void btnDelete_Click(object sender, EventArgs e) {
-			DialogResult result = MessageBox.Show("Are you sure you want to delete " + lbAddons.SelectedItem + " from your addons folder?", "Delete", MessageBoxButtons.YesNo);
-
-			if(result == DialogResult.Yes) {
-				try {
-					Directory.Delete(addonFolder + lbAddons.SelectedItem, true);
-					MessageBox.Show("Deletion of " + lbAddons.SelectedItem + " successful.", "Success");
-				}
-				catch(Exception ex) {
-					MessageBox.Show(ex.Message, "Error");
-				}
-			}
-		}
-
-		private void btnClose_Click(object sender, EventArgs e) {
-			Close();
 		}
 	}
 }

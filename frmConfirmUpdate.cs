@@ -16,11 +16,11 @@ namespace Switchex {
 		}
 
 		private void frmConfirmUpdate_Load(object sender, EventArgs e) {
-			string date = getLine(Application.StartupPath + "\\readme.txt", 3).Remove(0, 6);
+			string date = GetLine(Application.StartupPath + "\\readme.txt", 3).Remove(0, 6);
 
 			lblDate.Text = "Date: " + date;
 			lblCurrentVersion.Text = "Current: " + Application.ProductVersion;
-			lblUpdateVersion.Text = "Update: " + frmMain.downloadVersion;
+			lblUpdateVersion.Text = "Update: " + Globals.downloadVersion;
 
 			txtReadme.Text = File.ReadAllText(Application.StartupPath + "\\readme.txt").Replace("\n", Environment.NewLine);
 		}
@@ -35,7 +35,13 @@ namespace Switchex {
 			Close();
 		}
 
-		string getLine(string filename, int line) {
+		/// <summary>
+		/// Get the specified line from the text file.
+		/// </summary>
+		/// <param name="filename">The file</param>
+		/// <param name="line">The desired line</param>
+		/// <returns></returns>
+		string GetLine(string filename, int line) {
 			using(var sr = new StreamReader(filename)) {
 				for(int i = 1; i < line; i++) {
 					sr.ReadLine();

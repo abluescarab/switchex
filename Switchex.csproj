@@ -29,9 +29,10 @@
     <ProductName>Switchex</ProductName>
     <PublisherName>Abluescarab Designs</PublisherName>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>6.0.0.0</ApplicationVersion>
+    <ApplicationVersion>7.0.0.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -60,9 +61,34 @@
     <ApplicationIcon>Resources\switchex.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>8E846A12875A5B9B785001AC544CF6A46205065F</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Switchex_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="StarRatingControl">
+      <HintPath>..\..\..\Libraries\C#\StarRatingControl.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -73,6 +99,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAbout.Designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmConfirmUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,17 +117,29 @@
     <Compile Include="frmAddons.Designer.cs">
       <DependentUpon>frmAddons.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCreateRealmlist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCreateRealmlist.Designer.cs">
+      <DependentUpon>frmCreateRealmlist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmError.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmError.Designer.cs">
+      <DependentUpon>frmError.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmProfiles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProfiles.Designer.cs">
+      <DependentUpon>frmProfiles.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmUpdates.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmUpdates.Designer.cs">
       <DependentUpon>frmUpdates.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmAbout.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmAbout.Designer.cs">
-      <DependentUpon>frmAbout.cs</DependentUpon>
     </Compile>
     <Compile Include="frmAdd.cs">
       <SubType>Form</SubType>
@@ -121,6 +165,8 @@
     <Compile Include="frmOptions.Designer.cs">
       <DependentUpon>frmOptions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Globals.cs" />
+    <Compile Include="Profile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
@@ -136,14 +182,24 @@
     <EmbeddedResource Include="frmConfirmUpdate.resx">
       <DependentUpon>frmConfirmUpdate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCreateRealmlist.resx">
+      <DependentUpon>frmCreateRealmlist.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEdit.resx">
       <DependentUpon>frmEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmError.resx">
+      <DependentUpon>frmError.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmOptions.resx">
       <DependentUpon>frmOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProfiles.resx">
+      <DependentUpon>frmProfiles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUpdates.resx">
       <DependentUpon>frmUpdates.cs</DependentUpon>
@@ -172,6 +228,29 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\group_edit.png" />
+    <None Include="Resources\WoWScrnShot_100112_173614.png" />
+    <Content Include="x86\sqlceca40.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\sqlcecompact40.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\sqlceer40EN.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\sqlceme40.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\sqlceoledb40.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\sqlceqp40.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\sqlcese40.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\application_edit.png" />
     <None Include="Resources\folder.png" />
     <None Include="Resources\folder_add.png" />
@@ -202,12 +281,12 @@
     <None Include="Resources\sourceforge.png" />
     <None Include="Resources\switchex.png" />
     <None Include="Resources\switchex.ico" />
-    <None Include="Resources\changelog.txt">
+    <Content Include="Resources\changelog.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\LICENSE.txt">
+    </Content>
+    <Content Include="Resources\LICENSE.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
     <None Include="Resources\Icon1.ico" />
     <None Include="Resources\wrench.png" />
     <None Include="Resources\wrench_orange.png" />
@@ -216,11 +295,32 @@
     <None Include="Resources\arrow_undo.png" />
     <None Include="Resources\page_save.png" />
     <None Include="Resources\table_save.png" />
-    <None Include="Resources\Switchex Help.html">
+    <Content Include="Resources\Switchex Help.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
     <None Include="Resources\github.png" />
-    <Content Include="WoWServer.accdb">
+    <Content Include="AMD64\sqlceca40.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AMD64\sqlcecompact40.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AMD64\sqlceer40EN.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AMD64\sqlceme40.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AMD64\sqlceoledb40.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AMD64\sqlceqp40.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AMD64\sqlcese40.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="switchex.sdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -240,6 +340,26 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SQL.Server.Compact.4.0">
+      <Visible>False</Visible>
+      <ProductName>SQL Server Compact 4.0 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="switchex.sdf">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,8 +1,11 @@
-﻿using System;
+﻿using RatingControl;
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.OleDb;
+using System.Data.SqlClient;
+using System.Data.SqlServerCe;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -11,70 +14,52 @@ using System.Windows.Forms;
 
 namespace Switchex {
 	public partial class frmEdit: Form {
+		StarRatingControl ctlStarRating = new StarRatingControl();
+
 		public frmEdit() {
 			InitializeComponent();
+
+			// Initialize star rating control
+			ctlStarRating.Top = 119;
+			ctlStarRating.Left = 67;
+			ctlStarRating.Height = 18;
+			ctlStarRating.Width = 100;
+			ctlStarRating.StarSpacing = 5;
+			ctlStarRating.GradientBackground = false;
+			ctlStarRating.BackColor = Color.FromName("Control");
+			ctlStarRating.SelectedColor = Color.FromArgb(255, 255, 208, 0);
+			ctlStarRating.HoverColor = Color.Yellow;
+			ctlStarRating.TabIndex = 4;
+			ctlStarRating.BringToFront();
+
+			// Add it to the form
+			Controls.Add(ctlStarRating);
 		}
 
 		private void frmEdit_Load(object sender, EventArgs e) {
-			frmMain frmMain = new frmMain();
+			txtName.Text = Globals.selectedName;
+			txtIP.Text = Globals.selectedIP;
+			txtWebsite.Text = Globals.selectedWebsite;
+			txtPatch.Text = Globals.selectedPatch;
+			txtNotes.Text = Globals.selectedNotes;
+			ctlStarRating.SelectedStar = Convert.ToInt32(Globals.selectedRating);
 
-			txtName.Text = frmMain.currentName;
-			txtIP.Text = frmMain.currentIP;
-			txtWebsite.Text = frmMain.currentWebsite;
-			txtPatch.Text = frmMain.currentPatch;
-			txtRating.Text = frmMain.currentRating;
-			txtNotes.Text = frmMain.currentNotes;
+			cmbProfiles.Items.Clear();
+
+			foreach(Profile profile in Globals.profiles) {
+				cmbProfiles.Items.Add(profile.ProfileName);
+			}
+
+			cmbProfiles.SelectedItem = Globals.selectedProfile;
 		}
 
 		private void btnOK_Click(object sender, EventArgs e) {
-			editServer();
+			EditServer();
 			Close();
 		}
 
 		private void btnCancel_Click(object sender, EventArgs e) {
 			Close();
-		}
-
-		private void editServer() {
-			if(txtName.Text != "" && txtIP.Text != "" && txtWebsite.Text != "") {
-				try {
-					frmMain frmMain = new frmMain();
-					OleDbConnection conn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\WoWServer.accdb");
-					OleDbCommand cmd = new OleDbCommand();
-
-					string name = txtName.Text;
-					string ip = txtIP.Text;
-					string website = txtWebsite.Text;
-					string patch = txtPatch.Text;
-					string rating = txtRating.Text;
-					string notes = txtNotes.Text;
-
-					if(patch == "") {
-						patch = "N/A";
-					}
-					if(rating == "") {
-						rating = "None";
-					}
-					if(notes == "") {
-						notes = "None";
-					}
-
-					cmd.Connection = conn;
-					conn.Open();
-
-					cmd.CommandText = "UPDATE ServerInfo SET ServerName='" + name + "', ServerIP='" + ip + "', ServerWebsite='" + website +
-						"', ServerPatch='" + patch + "', ServerRating='" + rating + "', ServerNotes='" + notes + "' WHERE ServerName='" + frmMain.currentName + "'";
-
-					cmd.ExecuteNonQuery();
-					conn.Close();
-				}
-				catch(Exception ex) {
-					MessageBox.Show(ex.Message, "Error");
-				}
-			}
-			else {
-				MessageBox.Show("Please ensure that the server name, IP, and website fields are filled out.");
-			}
 		}
 
 		private void txtName_TextChanged(object sender, EventArgs e) {
@@ -101,6 +86,50 @@ namespace Switchex {
 			}
 			else {
 				txtWebsite.BackColor = Color.FromName("Window");
+			}
+		}
+
+		/// <summary>
+		/// Edit the server.
+		/// </summary>
+		private void EditServer() {
+			if(txtName.Text != "" && txtIP.Text != "" && txtWebsite.Text != "") {
+				try {
+					using(frmMain frmMain = new frmMain()) {
+						using(SqlCeConnection conn = new SqlCeConnection(Properties.Settings.Default.switchexConnectionString)) {
+							using(SqlCeCommand cmd = new SqlCeCommand("UPDATE Servers SET ServerName=@name, ServerIP=@ip, ServerWebsite=@website, " +
+								"ServerPatch=@patch, ServerRating=@rating, ServerNotes=@notes, ServerProfile=@profile WHERE ID=@id", conn)) {
+								string patch = txtPatch.Text,
+								notes = txtNotes.Text;
+
+								if(patch == "") {
+									patch = "N/A";
+								}
+								if(notes == "") {
+									notes = "None";
+								}
+
+								cmd.Parameters.AddWithValue("@name", txtName.Text);
+								cmd.Parameters.AddWithValue("@ip", txtIP.Text);
+								cmd.Parameters.AddWithValue("@website", txtWebsite.Text);
+								cmd.Parameters.AddWithValue("@patch", patch);
+								cmd.Parameters.AddWithValue("@rating", ctlStarRating.SelectedStar);
+								cmd.Parameters.AddWithValue("@notes", notes);
+								cmd.Parameters.AddWithValue("@profile", cmbProfiles.SelectedItem);
+								cmd.Parameters.AddWithValue("@id", Globals.selectedID);
+
+								conn.Open();
+								cmd.ExecuteNonQuery();
+							}
+						}
+					}
+				}
+				catch(Exception ex) {
+					Globals.frmError.ShowDialog(ex);
+				}
+			}
+			else {
+				MessageBox.Show("Please ensure that the server name, IP, and website fields are filled out.");
 			}
 		}
 	}

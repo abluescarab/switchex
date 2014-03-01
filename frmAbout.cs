@@ -4,11 +4,10 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Switchex {
-	partial class frmAbout: Form {
+	partial class frmAbout : Form {
 		public frmAbout() {
 			InitializeComponent();
 			this.Text = String.Format("About {0}", AssemblyTitle);

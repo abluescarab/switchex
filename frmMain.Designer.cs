@@ -27,6 +27,7 @@
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
 			this.fileOptions = new System.Windows.Forms.ToolStripMenuItem();
+			this.fileProfiles = new System.Windows.Forms.ToolStripMenuItem();
 			this.fileSep1 = new System.Windows.Forms.ToolStripSeparator();
 			this.fileGameFolder = new System.Windows.Forms.ToolStripMenuItem();
 			this.fileAddonsFolder = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,25 +71,34 @@
 			this.helpHelpTopics = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpAbout = new System.Windows.Forms.ToolStripMenuItem();
 			this.dgvServers = new System.Windows.Forms.DataGridView();
-			this.ServerOnline = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-			this.ServerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ServerIP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ServerWebsite = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ServerPatch = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ServerRating = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ServerNotes = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.btnExit = new System.Windows.Forms.Button();
 			this.btnCheckOnline = new System.Windows.Forms.Button();
 			this.btnOpenWow = new System.Windows.Forms.Button();
-			this.btnOpenWebsite = new System.Windows.Forms.Button();
 			this.btnDelete = new System.Windows.Forms.Button();
 			this.btnSet = new System.Windows.Forms.Button();
 			this.btnEdit = new System.Windows.Forms.Button();
 			this.btnAdd = new System.Windows.Forms.Button();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-			this.lblCurrentPatch = new System.Windows.Forms.ToolStripStatusLabel();
-			this.lblCurrentServer = new System.Windows.Forms.ToolStripStatusLabel();
+			this.statusProfile = new System.Windows.Forms.ToolStripStatusLabel();
+			this.cmbProfiles = new System.Windows.Forms.ToolStripDropDownButton();
+			this.profilesAll = new System.Windows.Forms.ToolStripMenuItem();
+			this.statusSep1 = new System.Windows.Forms.ToolStripStatusLabel();
+			this.statusPatch = new System.Windows.Forms.ToolStripStatusLabel();
+			this.statusSep2 = new System.Windows.Forms.ToolStripStatusLabel();
+			this.statusServer = new System.Windows.Forms.ToolStripStatusLabel();
+			this.statusSep3 = new System.Windows.Forms.ToolStripStatusLabel();
+			this.statusLocationLabel = new System.Windows.Forms.ToolStripStatusLabel();
+			this.statusLocation = new System.Windows.Forms.ToolStripStatusLabel();
 			this.btnAddons = new System.Windows.Forms.Button();
+			this.ServerOnline = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+			this.ServerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ServerIP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ServerWebsite = new System.Windows.Forms.DataGridViewLinkColumn();
+			this.ServerPatch = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ServerRating = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ServerNotes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Profile = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.menuStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvServers)).BeginInit();
 			this.statusStrip1.SuspendLayout();
@@ -103,7 +113,7 @@
             this.menuHelp});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(904, 24);
+			this.menuStrip1.Size = new System.Drawing.Size(967, 24);
 			this.menuStrip1.TabIndex = 0;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -111,6 +121,7 @@
 			// 
 			this.menuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileOptions,
+            this.fileProfiles,
             this.fileSep1,
             this.fileGameFolder,
             this.fileAddonsFolder,
@@ -128,20 +139,29 @@
 			this.fileOptions.Image = global::Switchex.Properties.Resources.application_edit;
 			this.fileOptions.Name = "fileOptions";
 			this.fileOptions.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-			this.fileOptions.Size = new System.Drawing.Size(188, 22);
+			this.fileOptions.Size = new System.Drawing.Size(209, 22);
 			this.fileOptions.Text = "Options";
 			this.fileOptions.Click += new System.EventHandler(this.fileOptions_Click);
+			// 
+			// fileProfiles
+			// 
+			this.fileProfiles.Image = global::Switchex.Properties.Resources.group_edit;
+			this.fileProfiles.Name = "fileProfiles";
+			this.fileProfiles.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
+			this.fileProfiles.Size = new System.Drawing.Size(209, 22);
+			this.fileProfiles.Text = "Manage Profiles...";
+			this.fileProfiles.Click += new System.EventHandler(this.fileProfiles_Click);
 			// 
 			// fileSep1
 			// 
 			this.fileSep1.Name = "fileSep1";
-			this.fileSep1.Size = new System.Drawing.Size(185, 6);
+			this.fileSep1.Size = new System.Drawing.Size(206, 6);
 			// 
 			// fileGameFolder
 			// 
 			this.fileGameFolder.Image = global::Switchex.Properties.Resources.folder;
 			this.fileGameFolder.Name = "fileGameFolder";
-			this.fileGameFolder.Size = new System.Drawing.Size(188, 22);
+			this.fileGameFolder.Size = new System.Drawing.Size(209, 22);
 			this.fileGameFolder.Text = "Open Game Folder";
 			this.fileGameFolder.Click += new System.EventHandler(this.fileGameFolder_Click);
 			// 
@@ -149,7 +169,7 @@
 			// 
 			this.fileAddonsFolder.Image = global::Switchex.Properties.Resources.folder_add;
 			this.fileAddonsFolder.Name = "fileAddonsFolder";
-			this.fileAddonsFolder.Size = new System.Drawing.Size(188, 22);
+			this.fileAddonsFolder.Size = new System.Drawing.Size(209, 22);
 			this.fileAddonsFolder.Text = "Open Addons Folder";
 			this.fileAddonsFolder.Click += new System.EventHandler(this.fileAddonsFolder_Click);
 			// 
@@ -157,35 +177,35 @@
 			// 
 			this.fileOpenRealmlist.Image = global::Switchex.Properties.Resources.page_white_text;
 			this.fileOpenRealmlist.Name = "fileOpenRealmlist";
-			this.fileOpenRealmlist.Size = new System.Drawing.Size(188, 22);
+			this.fileOpenRealmlist.Size = new System.Drawing.Size(209, 22);
 			this.fileOpenRealmlist.Text = "Open Realmlist.wtf";
 			this.fileOpenRealmlist.Click += new System.EventHandler(this.fileOpenRealmlist_Click);
 			// 
 			// fileSep2
 			// 
 			this.fileSep2.Name = "fileSep2";
-			this.fileSep2.Size = new System.Drawing.Size(185, 6);
+			this.fileSep2.Size = new System.Drawing.Size(206, 6);
 			// 
 			// fileRefresh
 			// 
 			this.fileRefresh.Image = global::Switchex.Properties.Resources.arrow_refresh;
 			this.fileRefresh.Name = "fileRefresh";
 			this.fileRefresh.ShortcutKeys = System.Windows.Forms.Keys.F5;
-			this.fileRefresh.Size = new System.Drawing.Size(188, 22);
+			this.fileRefresh.Size = new System.Drawing.Size(209, 22);
 			this.fileRefresh.Text = "Refresh Server List";
 			this.fileRefresh.Click += new System.EventHandler(this.fileRefresh_Click);
 			// 
 			// fileSep3
 			// 
 			this.fileSep3.Name = "fileSep3";
-			this.fileSep3.Size = new System.Drawing.Size(185, 6);
+			this.fileSep3.Size = new System.Drawing.Size(206, 6);
 			// 
 			// fileExit
 			// 
 			this.fileExit.Image = global::Switchex.Properties.Resources.cross;
 			this.fileExit.Name = "fileExit";
 			this.fileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-			this.fileExit.Size = new System.Drawing.Size(188, 22);
+			this.fileExit.Size = new System.Drawing.Size(209, 22);
 			this.fileExit.Text = "Exit";
 			this.fileExit.Click += new System.EventHandler(this.fileExit_Click);
 			// 
@@ -492,13 +512,211 @@
             this.ServerWebsite,
             this.ServerPatch,
             this.ServerRating,
-            this.ServerNotes});
+            this.ServerNotes,
+            this.Profile,
+            this.ID});
 			this.dgvServers.Location = new System.Drawing.Point(13, 28);
+			this.dgvServers.MultiSelect = false;
 			this.dgvServers.Name = "dgvServers";
 			this.dgvServers.ReadOnly = true;
+			this.dgvServers.RowHeadersVisible = false;
 			this.dgvServers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dgvServers.Size = new System.Drawing.Size(738, 325);
+			this.dgvServers.ShowEditingIcon = false;
+			this.dgvServers.Size = new System.Drawing.Size(801, 325);
 			this.dgvServers.TabIndex = 99;
+			this.dgvServers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvServers_CellContentClick);
+			this.dgvServers.SelectionChanged += new System.EventHandler(this.dgvServers_SelectionChanged);
+			// 
+			// btnExit
+			// 
+			this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnExit.Image = global::Switchex.Properties.Resources.cross;
+			this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnExit.Location = new System.Drawing.Point(820, 328);
+			this.btnExit.Name = "btnExit";
+			this.btnExit.Size = new System.Drawing.Size(135, 25);
+			this.btnExit.TabIndex = 7;
+			this.btnExit.Text = "Exit";
+			this.btnExit.UseVisualStyleBackColor = true;
+			this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+			// 
+			// btnCheckOnline
+			// 
+			this.btnCheckOnline.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnCheckOnline.Image = global::Switchex.Properties.Resources.computer_link;
+			this.btnCheckOnline.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnCheckOnline.Location = new System.Drawing.Point(820, 225);
+			this.btnCheckOnline.Name = "btnCheckOnline";
+			this.btnCheckOnline.Size = new System.Drawing.Size(135, 25);
+			this.btnCheckOnline.TabIndex = 6;
+			this.btnCheckOnline.Text = "Check Online";
+			this.btnCheckOnline.UseVisualStyleBackColor = true;
+			this.btnCheckOnline.Click += new System.EventHandler(this.btnCheckOnline_Click);
+			// 
+			// btnOpenWow
+			// 
+			this.btnOpenWow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnOpenWow.Image = global::Switchex.Properties.Resources.application_get;
+			this.btnOpenWow.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnOpenWow.Location = new System.Drawing.Point(820, 175);
+			this.btnOpenWow.Name = "btnOpenWow";
+			this.btnOpenWow.Size = new System.Drawing.Size(135, 25);
+			this.btnOpenWow.TabIndex = 5;
+			this.btnOpenWow.Text = "Open WoW";
+			this.btnOpenWow.UseVisualStyleBackColor = true;
+			this.btnOpenWow.Click += new System.EventHandler(this.btnOpenWow_Click);
+			// 
+			// btnDelete
+			// 
+			this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnDelete.Image = global::Switchex.Properties.Resources.delete;
+			this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnDelete.Location = new System.Drawing.Point(820, 121);
+			this.btnDelete.Name = "btnDelete";
+			this.btnDelete.Size = new System.Drawing.Size(135, 25);
+			this.btnDelete.TabIndex = 3;
+			this.btnDelete.Text = "Delete Server";
+			this.btnDelete.UseVisualStyleBackColor = true;
+			this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+			// 
+			// btnSet
+			// 
+			this.btnSet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnSet.Image = global::Switchex.Properties.Resources.accept;
+			this.btnSet.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnSet.Location = new System.Drawing.Point(820, 28);
+			this.btnSet.Name = "btnSet";
+			this.btnSet.Size = new System.Drawing.Size(135, 25);
+			this.btnSet.TabIndex = 0;
+			this.btnSet.Text = "Set Server";
+			this.btnSet.UseVisualStyleBackColor = true;
+			this.btnSet.Click += new System.EventHandler(this.btnSet_Click);
+			// 
+			// btnEdit
+			// 
+			this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnEdit.Image = global::Switchex.Properties.Resources.pencil;
+			this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnEdit.Location = new System.Drawing.Point(820, 90);
+			this.btnEdit.Name = "btnEdit";
+			this.btnEdit.Size = new System.Drawing.Size(135, 25);
+			this.btnEdit.TabIndex = 2;
+			this.btnEdit.Text = "Edit Server";
+			this.btnEdit.UseVisualStyleBackColor = true;
+			this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+			// 
+			// btnAdd
+			// 
+			this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnAdd.Image = global::Switchex.Properties.Resources.add;
+			this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnAdd.Location = new System.Drawing.Point(820, 59);
+			this.btnAdd.Name = "btnAdd";
+			this.btnAdd.Size = new System.Drawing.Size(135, 25);
+			this.btnAdd.TabIndex = 1;
+			this.btnAdd.Text = "Add Server";
+			this.btnAdd.UseVisualStyleBackColor = true;
+			this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+			// 
+			// statusStrip1
+			// 
+			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusProfile,
+            this.cmbProfiles,
+            this.statusSep1,
+            this.statusPatch,
+            this.statusSep2,
+            this.statusServer,
+            this.statusSep3,
+            this.statusLocationLabel,
+            this.statusLocation});
+			this.statusStrip1.Location = new System.Drawing.Point(0, 356);
+			this.statusStrip1.Name = "statusStrip1";
+			this.statusStrip1.Size = new System.Drawing.Size(967, 22);
+			this.statusStrip1.TabIndex = 14;
+			this.statusStrip1.Text = "statusStrip1";
+			// 
+			// statusProfile
+			// 
+			this.statusProfile.Name = "statusProfile";
+			this.statusProfile.Size = new System.Drawing.Size(44, 17);
+			this.statusProfile.Text = "Profile:";
+			// 
+			// cmbProfiles
+			// 
+			this.cmbProfiles.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+			this.cmbProfiles.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.profilesAll});
+			this.cmbProfiles.Image = global::Switchex.Properties.Resources.group_edit;
+			this.cmbProfiles.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.cmbProfiles.Name = "cmbProfiles";
+			this.cmbProfiles.Size = new System.Drawing.Size(97, 20);
+			this.cmbProfiles.Text = "Current Profile";
+			this.cmbProfiles.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.cmbProfiles_DropDownItemClicked);
+			this.cmbProfiles.TextChanged += new System.EventHandler(this.cmbProfiles_TextChanged);
+			// 
+			// profilesAll
+			// 
+			this.profilesAll.Name = "profilesAll";
+			this.profilesAll.Size = new System.Drawing.Size(152, 22);
+			this.profilesAll.Text = "All";
+			// 
+			// statusSep1
+			// 
+			this.statusSep1.Name = "statusSep1";
+			this.statusSep1.Size = new System.Drawing.Size(10, 17);
+			this.statusSep1.Text = "|";
+			// 
+			// statusPatch
+			// 
+			this.statusPatch.Margin = new System.Windows.Forms.Padding(0, 3, 5, 2);
+			this.statusPatch.Name = "statusPatch";
+			this.statusPatch.Size = new System.Drawing.Size(37, 17);
+			this.statusPatch.Text = "Patch";
+			// 
+			// statusSep2
+			// 
+			this.statusSep2.Name = "statusSep2";
+			this.statusSep2.Size = new System.Drawing.Size(10, 17);
+			this.statusSep2.Text = "|";
+			// 
+			// statusServer
+			// 
+			this.statusServer.Margin = new System.Windows.Forms.Padding(5, 3, 0, 2);
+			this.statusServer.Name = "statusServer";
+			this.statusServer.Size = new System.Drawing.Size(39, 17);
+			this.statusServer.Text = "Server";
+			// 
+			// statusSep3
+			// 
+			this.statusSep3.Name = "statusSep3";
+			this.statusSep3.Size = new System.Drawing.Size(10, 17);
+			this.statusSep3.Text = "|";
+			// 
+			// statusLocationLabel
+			// 
+			this.statusLocationLabel.Name = "statusLocationLabel";
+			this.statusLocationLabel.Size = new System.Drawing.Size(56, 17);
+			this.statusLocationLabel.Text = "Location:";
+			// 
+			// statusLocation
+			// 
+			this.statusLocation.Name = "statusLocation";
+			this.statusLocation.Size = new System.Drawing.Size(39, 17);
+			this.statusLocation.Text = "None.";
+			// 
+			// btnAddons
+			// 
+			this.btnAddons.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnAddons.Image = global::Switchex.Properties.Resources.folder_add;
+			this.btnAddons.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnAddons.Location = new System.Drawing.Point(820, 256);
+			this.btnAddons.Name = "btnAddons";
+			this.btnAddons.Size = new System.Drawing.Size(135, 25);
+			this.btnAddons.TabIndex = 100;
+			this.btnAddons.Text = "Addons";
+			this.btnAddons.UseVisualStyleBackColor = true;
+			this.btnAddons.Click += new System.EventHandler(this.btnAddons_Click);
 			// 
 			// ServerOnline
 			// 
@@ -520,7 +738,6 @@
 			this.ServerIP.HeaderText = "IP";
 			this.ServerIP.Name = "ServerIP";
 			this.ServerIP.ReadOnly = true;
-			this.ServerIP.Width = 133;
 			// 
 			// ServerWebsite
 			// 
@@ -528,6 +745,7 @@
 			this.ServerWebsite.Name = "ServerWebsite";
 			this.ServerWebsite.ReadOnly = true;
 			this.ServerWebsite.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+			this.ServerWebsite.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
 			this.ServerWebsite.Width = 133;
 			// 
 			// ServerPatch
@@ -555,159 +773,31 @@
 			this.ServerNotes.Resizable = System.Windows.Forms.DataGridViewTriState.True;
 			this.ServerNotes.Width = 133;
 			// 
-			// btnExit
+			// Profile
 			// 
-			this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnExit.Image = global::Switchex.Properties.Resources.cross;
-			this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnExit.Location = new System.Drawing.Point(757, 328);
-			this.btnExit.Name = "btnExit";
-			this.btnExit.Size = new System.Drawing.Size(135, 25);
-			this.btnExit.TabIndex = 7;
-			this.btnExit.Text = "Exit";
-			this.btnExit.UseVisualStyleBackColor = true;
-			this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+			this.Profile.HeaderText = "Profile";
+			this.Profile.Name = "Profile";
+			this.Profile.ReadOnly = true;
+			this.Profile.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+			this.Profile.Width = 133;
 			// 
-			// btnCheckOnline
+			// ID
 			// 
-			this.btnCheckOnline.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnCheckOnline.Image = global::Switchex.Properties.Resources.computer_link;
-			this.btnCheckOnline.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnCheckOnline.Location = new System.Drawing.Point(757, 245);
-			this.btnCheckOnline.Name = "btnCheckOnline";
-			this.btnCheckOnline.Size = new System.Drawing.Size(135, 25);
-			this.btnCheckOnline.TabIndex = 6;
-			this.btnCheckOnline.Text = "Check Online";
-			this.btnCheckOnline.UseVisualStyleBackColor = true;
-			this.btnCheckOnline.Click += new System.EventHandler(this.btnCheckOnline_Click);
-			// 
-			// btnOpenWow
-			// 
-			this.btnOpenWow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnOpenWow.Image = global::Switchex.Properties.Resources.application_get;
-			this.btnOpenWow.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnOpenWow.Location = new System.Drawing.Point(757, 198);
-			this.btnOpenWow.Name = "btnOpenWow";
-			this.btnOpenWow.Size = new System.Drawing.Size(135, 25);
-			this.btnOpenWow.TabIndex = 5;
-			this.btnOpenWow.Text = "Open WoW";
-			this.btnOpenWow.UseVisualStyleBackColor = true;
-			this.btnOpenWow.Click += new System.EventHandler(this.btnOpenWow_Click);
-			// 
-			// btnOpenWebsite
-			// 
-			this.btnOpenWebsite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnOpenWebsite.Image = global::Switchex.Properties.Resources.world;
-			this.btnOpenWebsite.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnOpenWebsite.Location = new System.Drawing.Point(757, 167);
-			this.btnOpenWebsite.Name = "btnOpenWebsite";
-			this.btnOpenWebsite.Size = new System.Drawing.Size(135, 25);
-			this.btnOpenWebsite.TabIndex = 4;
-			this.btnOpenWebsite.Text = "Open Website";
-			this.btnOpenWebsite.UseVisualStyleBackColor = true;
-			this.btnOpenWebsite.Click += new System.EventHandler(this.btnOpenWebsite_Click);
-			// 
-			// btnDelete
-			// 
-			this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnDelete.Image = global::Switchex.Properties.Resources.delete;
-			this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnDelete.Location = new System.Drawing.Point(757, 121);
-			this.btnDelete.Name = "btnDelete";
-			this.btnDelete.Size = new System.Drawing.Size(135, 25);
-			this.btnDelete.TabIndex = 3;
-			this.btnDelete.Text = "Delete Server";
-			this.btnDelete.UseVisualStyleBackColor = true;
-			this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-			// 
-			// btnSet
-			// 
-			this.btnSet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnSet.Image = global::Switchex.Properties.Resources.accept;
-			this.btnSet.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnSet.Location = new System.Drawing.Point(757, 28);
-			this.btnSet.Name = "btnSet";
-			this.btnSet.Size = new System.Drawing.Size(135, 25);
-			this.btnSet.TabIndex = 0;
-			this.btnSet.Text = "Set Server";
-			this.btnSet.UseVisualStyleBackColor = true;
-			this.btnSet.Click += new System.EventHandler(this.btnSet_Click);
-			// 
-			// btnEdit
-			// 
-			this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnEdit.Image = global::Switchex.Properties.Resources.pencil;
-			this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnEdit.Location = new System.Drawing.Point(757, 90);
-			this.btnEdit.Name = "btnEdit";
-			this.btnEdit.Size = new System.Drawing.Size(135, 25);
-			this.btnEdit.TabIndex = 2;
-			this.btnEdit.Text = "Edit Server";
-			this.btnEdit.UseVisualStyleBackColor = true;
-			this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-			// 
-			// btnAdd
-			// 
-			this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnAdd.Image = global::Switchex.Properties.Resources.add;
-			this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnAdd.Location = new System.Drawing.Point(757, 59);
-			this.btnAdd.Name = "btnAdd";
-			this.btnAdd.Size = new System.Drawing.Size(135, 25);
-			this.btnAdd.TabIndex = 1;
-			this.btnAdd.Text = "Add Server";
-			this.btnAdd.UseVisualStyleBackColor = true;
-			this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-			// 
-			// statusStrip1
-			// 
-			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblCurrentPatch,
-            this.lblCurrentServer});
-			this.statusStrip1.Location = new System.Drawing.Point(0, 356);
-			this.statusStrip1.Name = "statusStrip1";
-			this.statusStrip1.Size = new System.Drawing.Size(904, 22);
-			this.statusStrip1.TabIndex = 14;
-			this.statusStrip1.Text = "statusStrip1";
-			// 
-			// lblCurrentPatch
-			// 
-			this.lblCurrentPatch.Margin = new System.Windows.Forms.Padding(0, 3, 5, 2);
-			this.lblCurrentPatch.Name = "lblCurrentPatch";
-			this.lblCurrentPatch.Size = new System.Drawing.Size(37, 17);
-			this.lblCurrentPatch.Text = "Patch";
-			// 
-			// lblCurrentServer
-			// 
-			this.lblCurrentServer.Margin = new System.Windows.Forms.Padding(5, 3, 0, 2);
-			this.lblCurrentServer.Name = "lblCurrentServer";
-			this.lblCurrentServer.Size = new System.Drawing.Size(39, 17);
-			this.lblCurrentServer.Text = "Server";
-			// 
-			// btnAddons
-			// 
-			this.btnAddons.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnAddons.Image = global::Switchex.Properties.Resources.folder_add;
-			this.btnAddons.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnAddons.Location = new System.Drawing.Point(757, 276);
-			this.btnAddons.Name = "btnAddons";
-			this.btnAddons.Size = new System.Drawing.Size(135, 25);
-			this.btnAddons.TabIndex = 100;
-			this.btnAddons.Text = "Addons";
-			this.btnAddons.UseVisualStyleBackColor = true;
-			this.btnAddons.Click += new System.EventHandler(this.btnAddons_Click);
+			this.ID.HeaderText = "ID";
+			this.ID.Name = "ID";
+			this.ID.ReadOnly = true;
+			this.ID.Visible = false;
 			// 
 			// frmMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.Control;
-			this.ClientSize = new System.Drawing.Size(904, 378);
+			this.ClientSize = new System.Drawing.Size(967, 378);
 			this.Controls.Add(this.btnAddons);
 			this.Controls.Add(this.statusStrip1);
 			this.Controls.Add(this.btnExit);
 			this.Controls.Add(this.btnOpenWow);
-			this.Controls.Add(this.btnOpenWebsite);
 			this.Controls.Add(this.btnDelete);
 			this.Controls.Add(this.btnSet);
 			this.Controls.Add(this.btnEdit);
@@ -723,7 +813,6 @@
 			this.Text = "Switchex";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
 			this.Load += new System.EventHandler(this.frmMain_Load);
-			this.Resize += new System.EventHandler(this.frmMain_Resize);
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvServers)).EndInit();
@@ -782,25 +871,35 @@
 		private System.Windows.Forms.Button btnEdit;
 		private System.Windows.Forms.Button btnSet;
 		private System.Windows.Forms.Button btnDelete;
-		private System.Windows.Forms.Button btnOpenWebsite;
 		private System.Windows.Forms.Button btnOpenWow;
 		private System.Windows.Forms.Button btnCheckOnline;
 		private System.Windows.Forms.Button btnExit;
 		private System.Windows.Forms.ToolStripSeparator webSep1;
 		private System.Windows.Forms.StatusStrip statusStrip1;
-		private System.Windows.Forms.ToolStripStatusLabel lblCurrentPatch;
-		private System.Windows.Forms.ToolStripStatusLabel lblCurrentServer;
+		private System.Windows.Forms.ToolStripStatusLabel statusPatch;
+		private System.Windows.Forms.ToolStripStatusLabel statusServer;
 		public System.Windows.Forms.DataGridView dgvServers;
 		private System.Windows.Forms.ToolStripMenuItem fileOpenRealmlist;
 		private System.Windows.Forms.Button btnAddons;
+		private System.Windows.Forms.ToolStripMenuItem helpWebGitHub;
+		private System.Windows.Forms.ToolStripMenuItem fileProfiles;
+		private System.Windows.Forms.ToolStripDropDownButton cmbProfiles;
+		private System.Windows.Forms.ToolStripStatusLabel statusProfile;
+		private System.Windows.Forms.ToolStripStatusLabel statusSep1;
+		private System.Windows.Forms.ToolStripStatusLabel statusSep2;
+		private System.Windows.Forms.ToolStripMenuItem profilesAll;
+		private System.Windows.Forms.ToolStripStatusLabel statusSep3;
+		private System.Windows.Forms.ToolStripStatusLabel statusLocationLabel;
+		private System.Windows.Forms.ToolStripStatusLabel statusLocation;
 		private System.Windows.Forms.DataGridViewCheckBoxColumn ServerOnline;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ServerName;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ServerIP;
-		private System.Windows.Forms.DataGridViewTextBoxColumn ServerWebsite;
+		private System.Windows.Forms.DataGridViewLinkColumn ServerWebsite;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ServerPatch;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ServerRating;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ServerNotes;
-		private System.Windows.Forms.ToolStripMenuItem helpWebGitHub;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Profile;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ID;
 	}
 }
 
