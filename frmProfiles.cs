@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+// TODO: show count of moved profiles
+
 namespace Switchex {
 	public partial class frmProfiles : Form {
 		bool _wasChanged = false;
@@ -270,19 +272,24 @@ namespace Switchex {
 								if(Properties.Settings.Default.deleteServersAfterProfile) {
 									cmd.CommandText = "DELETE FROM Servers WHERE ServerProfile=@profile";
 									cmd.Parameters.AddWithValue("@profile", name);
-									cmd.ExecuteNonQuery();
+									int moved = cmd.ExecuteNonQuery();
 
-									MessageBox.Show(name + " and all of its servers deleted.", "Delete Profile");
+									MessageBox.Show(name + " and " + moved + " servers deleted.", "Delete Profile");
 								}
 								else {
 									cmd.CommandText = "UPDATE Servers SET ServerProfile=@new WHERE ServerProfile=@profile";
 									cmd.Parameters.AddWithValue("@new", Globals.profiles.SingleOrDefault(
 										item => item.ProfileDefault == true && item.ProfileName != name).ProfileName);
 									cmd.Parameters.AddWithValue("@profile", name);
-									cmd.ExecuteNonQuery();
+									int moved = cmd.ExecuteNonQuery();
 
-									MessageBox.Show(name + " deleted. Its servers have moved to profile \"" +
-										Globals.profiles.SingleOrDefault(item => item.ProfileDefault == true).ProfileName + "\".", "Delete Profile");
+									if(moved == 0) {
+										MessageBox.Show(name + " deleted. No servers were moved to another profile.", "Delete Profile");
+									}
+									else {
+										MessageBox.Show(name + " deleted. " + moved + (moved > 1 ? " servers" : " server") + " moved to profile \"" + 
+											Globals.profiles.SingleOrDefault(item => item.ProfileDefault == true).ProfileName + "\".", "Delete Profile");
+									}
 								}
 							}
 

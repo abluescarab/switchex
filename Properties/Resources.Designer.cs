@@ -133,19 +133,20 @@ namespace Switchex.Properties {
         /// <summary>
         ///   Looks up a localized string similar to 7.0.0
         ///=====
-        ///   Date: 
+        ///   Date: 2014-03-01
         ///----------------------------------------------------------
         ///- Added Profiles feature
-        ///- Added star rating controls in the Add and Edit windows
+        ///- Can now have multiple servers with the same name
+        ///- Gets update information from abluescarab.us instead of switchex.abluescarab.us
+        ///- Error messages can be copied
+        ///- Changed default install location
+        ///
+        ///frmMain:
         ///- Can click the URL directly instead of clicking &quot;Open Website&quot; button
+        ///- Changed server list selection colors
         ///- Removed Open Website button
         ///- Removed row headers
-        ///- Changed server list selection colors
-        ///- Can now have multiple servers with the same name
-        ///- deleteServer method uses parameters now
-        ///- Disable addons list when there are no addons
-        ///- Updated help file
-        ///- Changed the [rest of string was truncated]&quot;;.
+        ///- Changed d [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string changelog {
             get {
@@ -308,6 +309,26 @@ namespace Switchex.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap page_white_get {
+            get {
+                object obj = ResourceManager.GetObject("page_white_get", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap page_white_go {
+            get {
+                object obj = ResourceManager.GetObject("page_white_go", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap page_white_text {
             get {
                 object obj = ResourceManager.GetObject("page_white_text", resourceCulture);
@@ -367,8 +388,8 @@ namespace Switchex.Properties {
         ///		height: 100%;
         ///	}
         ///	body {
-        ///		font-family: Verdana;
-        ///		font-size: 13px;
+        ///		font-family: Arial, Helvetica, sans-serif;
+        ///		font-size: 14px;
         ///		padding: 0;
         ///		margin: 0;
         ///		padding-bottom: 10px;
@@ -378,8 +399,7 @@ namespace Switchex.Properties {
         ///		margin: 0;
         ///	}
         ///	h2 {
-        ///		border-bottom: 1px solid black;
-        /// [rest of string was truncated]&quot;;.
+        ///		border-botto [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Switchex_Help {
             get {

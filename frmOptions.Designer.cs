@@ -33,7 +33,6 @@
 			this.btnRestoreDatabase = new System.Windows.Forms.Button();
 			this.btnRestoreRealmlist = new System.Windows.Forms.Button();
 			this.btnCancel = new System.Windows.Forms.Button();
-			this.dlgFile = new System.Windows.Forms.OpenFileDialog();
 			this.dlgFolder = new System.Windows.Forms.FolderBrowserDialog();
 			this.chkOpenWow = new System.Windows.Forms.CheckBox();
 			this.chkUpdates = new System.Windows.Forms.CheckBox();
@@ -41,11 +40,21 @@
 			this.tlpOkCancel = new System.Windows.Forms.TableLayoutPanel();
 			this.gpbGeneral = new System.Windows.Forms.GroupBox();
 			this.chkDeleteServers = new System.Windows.Forms.CheckBox();
+			this.gpbExport = new System.Windows.Forms.GroupBox();
+			this.btnExportProfiles = new System.Windows.Forms.Button();
+			this.btnExportServers = new System.Windows.Forms.Button();
+			this.gpbImport = new System.Windows.Forms.GroupBox();
+			this.btnImportProfiles = new System.Windows.Forms.Button();
+			this.btnImportServers = new System.Windows.Forms.Button();
+			this.dlgSaveFile = new System.Windows.Forms.SaveFileDialog();
+			this.dlgOpenFile = new System.Windows.Forms.OpenFileDialog();
 			this.gpbMisc.SuspendLayout();
 			this.Restore.SuspendLayout();
 			this.gpbRestore.SuspendLayout();
 			this.tlpOkCancel.SuspendLayout();
 			this.gpbGeneral.SuspendLayout();
+			this.gpbExport.SuspendLayout();
+			this.gpbImport.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// gpbMisc
@@ -55,7 +64,7 @@
 			this.gpbMisc.Location = new System.Drawing.Point(12, 106);
 			this.gpbMisc.Name = "gpbMisc";
 			this.gpbMisc.Size = new System.Drawing.Size(185, 81);
-			this.gpbMisc.TabIndex = 2;
+			this.gpbMisc.TabIndex = 1;
 			this.gpbMisc.TabStop = false;
 			this.gpbMisc.Text = "Miscellaneous";
 			// 
@@ -96,7 +105,7 @@
 			this.Restore.Location = new System.Drawing.Point(203, 12);
 			this.Restore.Name = "Restore";
 			this.Restore.Size = new System.Drawing.Size(185, 81);
-			this.Restore.TabIndex = 3;
+			this.Restore.TabIndex = 2;
 			this.Restore.TabStop = false;
 			this.Restore.Text = "Backup";
 			// 
@@ -134,10 +143,10 @@
 			// 
 			this.gpbRestore.Controls.Add(this.btnRestoreDatabase);
 			this.gpbRestore.Controls.Add(this.btnRestoreRealmlist);
-			this.gpbRestore.Location = new System.Drawing.Point(203, 93);
+			this.gpbRestore.Location = new System.Drawing.Point(203, 99);
 			this.gpbRestore.Name = "gpbRestore";
 			this.gpbRestore.Size = new System.Drawing.Size(185, 81);
-			this.gpbRestore.TabIndex = 4;
+			this.gpbRestore.TabIndex = 3;
 			this.gpbRestore.TabStop = false;
 			this.gpbRestore.Text = "Restore";
 			// 
@@ -180,7 +189,7 @@
 			this.btnCancel.Location = new System.Drawing.Point(103, 3);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(94, 27);
-			this.btnCancel.TabIndex = 6;
+			this.btnCancel.TabIndex = 1;
 			this.btnCancel.Text = "Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
 			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -216,7 +225,7 @@
 			this.btnOK.Location = new System.Drawing.Point(3, 3);
 			this.btnOK.Name = "btnOK";
 			this.btnOK.Size = new System.Drawing.Size(94, 27);
-			this.btnOK.TabIndex = 7;
+			this.btnOK.TabIndex = 0;
 			this.btnOK.Text = "OK";
 			this.btnOK.UseVisualStyleBackColor = true;
 			this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -229,12 +238,12 @@
 			this.tlpOkCancel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tlpOkCancel.Controls.Add(this.btnOK, 0, 0);
 			this.tlpOkCancel.Controls.Add(this.btnCancel, 1, 0);
-			this.tlpOkCancel.Location = new System.Drawing.Point(188, 193);
+			this.tlpOkCancel.Location = new System.Drawing.Point(379, 188);
 			this.tlpOkCancel.Name = "tlpOkCancel";
 			this.tlpOkCancel.RowCount = 1;
 			this.tlpOkCancel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tlpOkCancel.Size = new System.Drawing.Size(200, 33);
-			this.tlpOkCancel.TabIndex = 8;
+			this.tlpOkCancel.TabIndex = 6;
 			// 
 			// gpbGeneral
 			// 
@@ -244,7 +253,7 @@
 			this.gpbGeneral.Location = new System.Drawing.Point(12, 12);
 			this.gpbGeneral.Name = "gpbGeneral";
 			this.gpbGeneral.Size = new System.Drawing.Size(185, 88);
-			this.gpbGeneral.TabIndex = 9;
+			this.gpbGeneral.TabIndex = 0;
 			this.gpbGeneral.TabStop = false;
 			this.gpbGeneral.Text = "General";
 			// 
@@ -258,12 +267,93 @@
 			this.chkDeleteServers.Text = "Delete servers with their profile";
 			this.chkDeleteServers.UseVisualStyleBackColor = true;
 			// 
+			// gpbExport
+			// 
+			this.gpbExport.Controls.Add(this.btnExportProfiles);
+			this.gpbExport.Controls.Add(this.btnExportServers);
+			this.gpbExport.Location = new System.Drawing.Point(394, 12);
+			this.gpbExport.Name = "gpbExport";
+			this.gpbExport.Size = new System.Drawing.Size(185, 81);
+			this.gpbExport.TabIndex = 4;
+			this.gpbExport.TabStop = false;
+			this.gpbExport.Text = "Export";
+			// 
+			// btnExportProfiles
+			// 
+			this.btnExportProfiles.Image = global::Switchex.Properties.Resources.page_white_go;
+			this.btnExportProfiles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnExportProfiles.Location = new System.Drawing.Point(6, 50);
+			this.btnExportProfiles.Name = "btnExportProfiles";
+			this.btnExportProfiles.Size = new System.Drawing.Size(173, 25);
+			this.btnExportProfiles.TabIndex = 1;
+			this.btnExportProfiles.Text = "Export Profiles to XML...";
+			this.btnExportProfiles.UseVisualStyleBackColor = true;
+			this.btnExportProfiles.Click += new System.EventHandler(this.btnExportProfiles_Click);
+			// 
+			// btnExportServers
+			// 
+			this.btnExportServers.Image = global::Switchex.Properties.Resources.page_white_go;
+			this.btnExportServers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnExportServers.Location = new System.Drawing.Point(6, 19);
+			this.btnExportServers.Name = "btnExportServers";
+			this.btnExportServers.Size = new System.Drawing.Size(173, 25);
+			this.btnExportServers.TabIndex = 0;
+			this.btnExportServers.Text = "Export Servers to XML...";
+			this.btnExportServers.UseVisualStyleBackColor = true;
+			this.btnExportServers.Click += new System.EventHandler(this.btnExportServers_Click);
+			// 
+			// gpbImport
+			// 
+			this.gpbImport.Controls.Add(this.btnImportProfiles);
+			this.gpbImport.Controls.Add(this.btnImportServers);
+			this.gpbImport.Location = new System.Drawing.Point(394, 99);
+			this.gpbImport.Name = "gpbImport";
+			this.gpbImport.Size = new System.Drawing.Size(185, 81);
+			this.gpbImport.TabIndex = 5;
+			this.gpbImport.TabStop = false;
+			this.gpbImport.Text = "Import";
+			// 
+			// btnImportProfiles
+			// 
+			this.btnImportProfiles.Image = global::Switchex.Properties.Resources.page_white_get;
+			this.btnImportProfiles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnImportProfiles.Location = new System.Drawing.Point(6, 50);
+			this.btnImportProfiles.Name = "btnImportProfiles";
+			this.btnImportProfiles.Size = new System.Drawing.Size(173, 25);
+			this.btnImportProfiles.TabIndex = 1;
+			this.btnImportProfiles.Text = "Import Profiles from XML...";
+			this.btnImportProfiles.UseVisualStyleBackColor = true;
+			this.btnImportProfiles.Click += new System.EventHandler(this.btnImportProfiles_Click);
+			// 
+			// btnImportServers
+			// 
+			this.btnImportServers.Image = global::Switchex.Properties.Resources.page_white_get;
+			this.btnImportServers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnImportServers.Location = new System.Drawing.Point(6, 19);
+			this.btnImportServers.Name = "btnImportServers";
+			this.btnImportServers.Size = new System.Drawing.Size(173, 25);
+			this.btnImportServers.TabIndex = 0;
+			this.btnImportServers.Text = "Import Servers from XML...";
+			this.btnImportServers.UseVisualStyleBackColor = true;
+			this.btnImportServers.Click += new System.EventHandler(this.btnImportServers_Click);
+			// 
+			// dlgSaveFile
+			// 
+			this.dlgSaveFile.DefaultExt = "*.xml";
+			this.dlgSaveFile.Filter = "XML files|*.xml";
+			// 
+			// dlgOpenFile
+			// 
+			this.dlgOpenFile.Filter = "XML files|*.xml";
+			// 
 			// frmOptions
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.btnCancel;
-			this.ClientSize = new System.Drawing.Size(400, 238);
+			this.ClientSize = new System.Drawing.Size(591, 233);
+			this.Controls.Add(this.gpbImport);
+			this.Controls.Add(this.gpbExport);
 			this.Controls.Add(this.gpbGeneral);
 			this.Controls.Add(this.tlpOkCancel);
 			this.Controls.Add(this.gpbRestore);
@@ -284,6 +374,8 @@
 			this.tlpOkCancel.ResumeLayout(false);
 			this.gpbGeneral.ResumeLayout(false);
 			this.gpbGeneral.PerformLayout();
+			this.gpbExport.ResumeLayout(false);
+			this.gpbImport.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -301,12 +393,19 @@
 		private System.Windows.Forms.Button btnRestoreRealmlist;
 		private System.Windows.Forms.Button btnRestoreDatabase;
 		private System.Windows.Forms.Button btnCancel;
-		private System.Windows.Forms.OpenFileDialog dlgFile;
 		private System.Windows.Forms.Button btnResetSettings;
 		private System.Windows.Forms.FolderBrowserDialog dlgFolder;
 		private System.Windows.Forms.Button btnOK;
 		private System.Windows.Forms.TableLayoutPanel tlpOkCancel;
 		private System.Windows.Forms.GroupBox gpbGeneral;
 		private System.Windows.Forms.CheckBox chkDeleteServers;
+		private System.Windows.Forms.GroupBox gpbExport;
+		private System.Windows.Forms.GroupBox gpbImport;
+		private System.Windows.Forms.Button btnExportProfiles;
+		private System.Windows.Forms.Button btnExportServers;
+		private System.Windows.Forms.Button btnImportProfiles;
+		private System.Windows.Forms.Button btnImportServers;
+		private System.Windows.Forms.SaveFileDialog dlgSaveFile;
+		private System.Windows.Forms.OpenFileDialog dlgOpenFile;
 	}
 }

@@ -169,6 +169,7 @@
     <Compile Include="Profile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Server.cs" />
     <Compile Include="Settings.cs" />
     <EmbeddedResource Include="frmAbout.resx">
       <DependentUpon>frmAbout.cs</DependentUpon>
@@ -230,6 +231,8 @@
   <ItemGroup>
     <None Include="Resources\group_edit.png" />
     <None Include="Resources\WoWScrnShot_100112_173614.png" />
+    <None Include="Resources\page_white_get.png" />
+    <None Include="Resources\page_white_go.png" />
     <Content Include="x86\sqlceca40.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -346,9 +349,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\images\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <PublishFile Include="switchex.sdf">
       <Visible>False</Visible>

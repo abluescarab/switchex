@@ -11,11 +11,17 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
 
-// TODO: separate backups for different profiles
+/* TODO: separate backups for different profiles
+ * TODO: load servers into objects
+ */
 
 namespace Switchex {
 	public partial class frmOptions: Form {
+		frmError frmError = new frmError();
+
 		public frmOptions() {
 			InitializeComponent();
 		}
@@ -32,6 +38,9 @@ namespace Switchex {
 			if(Properties.Settings.Default.deleteServersAfterProfile) {
 				chkDeleteServers.Checked = true;
 			}
+
+			dlgSaveFile.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+			dlgOpenFile.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 		}
 
 		private void btnCancel_Click(object sender, EventArgs e) {
@@ -134,6 +143,35 @@ namespace Switchex {
 			RestoreFile(Application.StartupPath + "\\switchex.sdf");
 		}
 
+		private void btnExportServers_Click(object sender, EventArgs e) {
+			dlgSaveFile.FileName = "wowservers.xml";
+
+			if(dlgSaveFile.ShowDialog() == DialogResult.OK && dlgSaveFile.FileName != "") {
+				ExportServersXml(dlgSaveFile.FileName);
+			}
+		}
+
+		private void btnExportProfiles_Click(object sender, EventArgs e) {
+			dlgSaveFile.FileName = "wowprofiles.xml";
+
+			if(dlgSaveFile.ShowDialog() == DialogResult.OK && dlgSaveFile.FileName != "") {
+				ExportProfilesXml(dlgSaveFile.FileName);
+			}
+		}
+
+		private void btnImportServers_Click(object sender, EventArgs e) {
+			if(dlgOpenFile.ShowDialog() == DialogResult.OK && dlgOpenFile.FileName != "") {
+				ImportServersXml(dlgOpenFile.FileName);
+			}
+		}
+
+		private void btnImportProfiles_Click(object sender, EventArgs e) {
+			if(dlgOpenFile.ShowDialog() == DialogResult.OK && dlgOpenFile.FileName != "") {
+				ImportProfilesXml(dlgOpenFile.FileName);
+			}
+		}
+
+		#region Functions
 		/// <summary>
 		/// Backs up a file.
 		/// </summary>
@@ -161,7 +199,7 @@ namespace Switchex {
 						MessageBox.Show("Backup successful.", "Success");
 					}
 					else if(fileAction == 2) {
-						MessageBox.Show("Realmlist.wtf does not exist. Cannot back up.", "Error");
+						MessageBox.Show("File does not exist. Cannot back up.", "Error");
 					}
 				}
 			}
@@ -198,5 +236,193 @@ namespace Switchex {
 				Globals.frmError.ShowDialog(ex);
 			}
 		}
+
+		/// <summary>
+		/// Exports servers to a specified XML file.
+		/// </summary>
+		/// <param name="filename">File to export to</param>
+		private void ExportServersXml(string filename) {
+			try {
+				XmlWriterSettings ws = new XmlWriterSettings();
+				ws.Indent = true;
+				ws.IndentChars = "\t";
+				ws.NewLineOnAttributes = true;
+
+				using(XmlWriter w = XmlWriter.Create(filename, ws)) {
+					w.WriteStartDocument();
+					w.WriteStartElement("Servers");
+					w.WriteAttributeString("provider", "Switchex");
+					w.WriteAttributeString("version", Application.ProductVersion);
+
+					foreach(Server server in Globals.servers) {
+						w.WriteStartElement("Server");
+
+						w.WriteElementString("Name", server.ServerName);
+						w.WriteElementString("IP", server.ServerIP);
+						w.WriteElementString("Website", server.ServerWebsite);
+						w.WriteElementString("Patch", server.ServerPatch);
+						w.WriteElementString("Rating", server.ServerRating.ToString());
+						w.WriteElementString("Notes", server.ServerNotes);
+						w.WriteElementString("Profile", server.ServerProfile);
+
+						w.WriteEndElement();
+					}
+
+					w.WriteEndElement();
+					w.WriteEndDocument();
+				}
+
+				MessageBox.Show("Exported servers successfully!", "Success");
+			}
+			catch(Exception ex) {
+				frmError.ShowDialog(ex);
+			}
+		}
+
+		/// <summary>
+		/// Exports profiles to a specified XML file.
+		/// </summary>
+		/// <param name="filename">File to export to</param>
+		private void ExportProfilesXml(string filename) {
+			try {
+				XmlWriterSettings ws = new XmlWriterSettings();
+				ws.Indent = true;
+				ws.IndentChars = "\t";
+				ws.NewLineOnAttributes = true;
+
+				using(XmlWriter w = XmlWriter.Create(filename, ws)) {
+					w.WriteStartDocument();
+					w.WriteStartElement("Profiles");
+					w.WriteAttributeString("provider", "Switchex");
+					w.WriteAttributeString("version", Application.ProductVersion);
+
+					foreach(Profile profile in Globals.profiles) {
+						w.WriteStartElement("Profile");
+						w.WriteAttributeString("default", profile.ProfileDefault.ToString());
+						w.WriteAttributeString("type", profile.ProfileType.ToString());
+
+						w.WriteElementString("Name", profile.ProfileName);
+						w.WriteElementString("Path", profile.ProfilePath);
+						w.WriteElementString("Description", profile.ProfileDesc);
+
+						w.WriteEndElement();
+					}
+
+					w.WriteEndElement();
+					w.WriteEndDocument();
+				}
+
+				MessageBox.Show("Exported profiles successfully!", "Success");
+			}
+			catch(Exception ex) {
+				frmError.ShowDialog(ex);
+			}
+		}
+
+		/// <summary>
+		/// Imports servers from a specified XML file.
+		/// </summary>
+		/// <param name="filename">File to import from</param>
+		private void ImportServersXml(string filename) {
+			try {
+				XDocument doc = XDocument.Load(filename);
+
+				if(doc.Root.Attribute("provider").Value != "Switchex") {
+					MessageBox.Show("The selected file does not contain any servers managed by Switchex.", "Import Failed");
+				}
+				else {
+					var xmlServers = doc.Descendants("Server");
+					
+					foreach(var item in xmlServers) {
+						using(SqlCeConnection conn = new SqlCeConnection(Properties.Settings.Default.switchexConnectionString)) {
+							using(SqlCeCommand cmd = new SqlCeCommand("INSERT INTO Servers (ServerName, ServerIP, ServerWebsite, ServerPatch, ServerRating, " +
+								"ServerNotes, ServerProfile) VALUES (@name, @ip, @website, @patch, @rating, @notes, @profile)", conn)) {
+								cmd.Parameters.AddWithValue("@name", SqlDbType.Text).Value = item.Element("Name").Value;
+								cmd.Parameters.AddWithValue("@ip", SqlDbType.Text).Value = item.Element("IP").Value;
+								cmd.Parameters.AddWithValue("@website", SqlDbType.Text).Value = item.Element("Website").Value;
+								cmd.Parameters.AddWithValue("@patch", SqlDbType.Text).Value = item.Element("Patch").Value;
+								cmd.Parameters.AddWithValue("@rating", SqlDbType.Int).Value = Convert.ToInt32(item.Element("Rating").Value);
+								cmd.Parameters.AddWithValue("@notes", SqlDbType.Text).Value = item.Element("Notes").Value;
+
+								if(Globals.profiles.Any(prof => prof.ProfileName == item.Element("Profile").Value)) {
+									cmd.Parameters.AddWithValue("@profile", SqlDbType.Text).Value = item.Element("Profile").Value;
+								}
+								else {
+									cmd.Parameters.AddWithValue("@profile",
+										Globals.profiles.SingleOrDefault(p => p.ProfileDefault).ProfileName);
+								}
+
+								conn.Open();
+								cmd.ExecuteNonQuery();
+							}
+						}
+					}
+
+					MessageBox.Show("Imported servers successfully!", "Success");
+				}
+			}
+			catch(Exception ex) {
+				frmError.ShowDialog(ex);
+			}
+		}
+
+		/// <summary>
+		/// Imports profiles from a specified XML file.
+		/// </summary>
+		/// <param name="filename">File to import from</param>
+		private void ImportProfilesXml(string filename) {
+			List<string> skipped = new List<string>();
+			int imported = 0;
+			
+			try {
+				XDocument doc = XDocument.Load(filename);
+
+				if(doc.Root.Attribute("provider").Value != "Switchex") {
+					MessageBox.Show("The selected file does not contain any Switchex profiles.", "Import Failed");
+				}
+				else {
+					var xmlProfiles = doc.Descendants("Profile");
+
+					foreach(var item in xmlProfiles) {
+						if(!Globals.profiles.Any(p => p.ProfileName == item.Element("Name").Value)) {
+							using(SqlCeConnection conn = new SqlCeConnection(Properties.Settings.Default.switchexConnectionString)) {
+								using(SqlCeCommand cmd = new SqlCeCommand("INSERT INTO Profiles (ProfileName, ProfilePath, ProfileDescription, ProfileType) " +
+									"VALUES (@name, @path, @desc, @type)", conn)) {
+									cmd.Parameters.AddWithValue("@name", item.Element("Name").Value);
+									cmd.Parameters.AddWithValue("@path", item.Element("Path").Value);
+									cmd.Parameters.AddWithValue("@desc", item.Element("Description").Value);
+									cmd.Parameters.AddWithValue("@type", item.Attribute("type").Value);
+
+									conn.Open();
+									cmd.ExecuteNonQuery();
+								}
+							}
+
+							imported++;
+						}
+						else {
+							skipped.Add(item.Element("Name").Value);
+						}
+					}
+
+					if(skipped.Count == 0) {
+						MessageBox.Show("Imported profiles successfully!", "Success");
+					}
+					else {
+						string s = "Imported " + imported + " profiles. The following profiles already exist:\n\n";
+
+						foreach(string item in skipped) {
+							s += item + "\n";
+						}
+
+						MessageBox.Show(s, "Success");
+					}
+				}
+			}
+			catch(Exception ex) {
+				frmError.ShowDialog(ex);
+			}
+		}
+		#endregion
 	}
 }

@@ -1,3 +1,19 @@
+7.1.0
+=====
+   Date: 2014-03-03
+----------------------------------------------------------
+- Added import/export to XML options
+- Now loads servers into Server class objects
+
+frmProfiles:
+- Shows count of servers moved after profile deletion
+
+frmOptions:
+- Fixed backup error message
+
+frmMain:
+- Fixed TabIndex
+
 7.0.0
 =====
    Date: 2014-03-01

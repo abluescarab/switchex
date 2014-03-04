@@ -60,9 +60,9 @@ namespace Switchex {
 				Properties.Settings.Default.Save();
 			}
 
-			//if(!Directory.Exists(Application.StartupPath + "\\Backups")) {
-			//	Directory.CreateDirectory(Application.StartupPath + "\\Backups");
-			//}
+			if(!Directory.Exists(Application.StartupPath + "\\Backups")) {
+				Directory.CreateDirectory(Application.StartupPath + "\\Backups");
+			}
 
 			CheckForMainProfile(wowInstall);
 
@@ -143,8 +143,6 @@ namespace Switchex {
 							// And move it to the correct directory
 							string[] args = { "true", Application.StartupPath + "\\realmlist.wtf", file };
 							int fileAction = Globals.RunActionsExecutable(Globals.FileAction.CopyFile, args);
-
-							File.Delete(Application.StartupPath + "\\realmlist.wtf");
 
 							if(fileAction == 0) {
 								// If they want to open WoW after setting a server
@@ -267,25 +265,27 @@ namespace Switchex {
 		}
 
 		private void dgvServers_SelectionChanged(object sender, EventArgs e) {
-			if(dgvServers.SelectedRows.Count > 0) {
-				Globals.selectedName = dgvServers.SelectedRows[0].Cells[1].Value.ToString();
-				Globals.selectedIP = dgvServers.SelectedRows[0].Cells[2].Value.ToString();
-				Globals.selectedWebsite = dgvServers.SelectedRows[0].Cells[3].Value.ToString();
-				Globals.selectedPatch = dgvServers.SelectedRows[0].Cells[4].Value.ToString();
-				Globals.selectedRating = dgvServers.SelectedRows[0].Cells[5].Value.ToString();
-				Globals.selectedNotes = dgvServers.SelectedRows[0].Cells[6].Value.ToString();
-				Globals.selectedProfile = dgvServers.SelectedRows[0].Cells[7].Value.ToString();
-				Globals.selectedID = dgvServers.SelectedRows[0].Cells[8].Value.ToString();
-			}
-			else {
-				Globals.selectedName = null;
-				Globals.selectedIP = null;
-				Globals.selectedWebsite = null;
-				Globals.selectedPatch = null;
-				Globals.selectedRating = null;
-				Globals.selectedNotes = null;
-				Globals.selectedProfile = null;
-				Globals.selectedID = null;
+			if(dgvServers.Rows.Count > 0) {
+				if(dgvServers.SelectedRows.Count > 0) {
+					Globals.selectedName = dgvServers.SelectedRows[0].Cells[1].Value.ToString();
+					Globals.selectedIP = dgvServers.SelectedRows[0].Cells[2].Value.ToString();
+					Globals.selectedWebsite = dgvServers.SelectedRows[0].Cells[3].Value.ToString();
+					Globals.selectedPatch = dgvServers.SelectedRows[0].Cells[4].Value.ToString();
+					Globals.selectedRating = dgvServers.SelectedRows[0].Cells[5].Value.ToString();
+					Globals.selectedNotes = dgvServers.SelectedRows[0].Cells[6].Value.ToString();
+					Globals.selectedProfile = dgvServers.SelectedRows[0].Cells[7].Value.ToString();
+					Globals.selectedID = dgvServers.SelectedRows[0].Cells[8].Value.ToString();
+				}
+				else {
+					Globals.selectedName = null;
+					Globals.selectedIP = null;
+					Globals.selectedWebsite = null;
+					Globals.selectedPatch = null;
+					Globals.selectedRating = null;
+					Globals.selectedNotes = null;
+					Globals.selectedProfile = null;
+					Globals.selectedID = null;
+				}
 			}
 		}
 		#endregion
@@ -506,12 +506,12 @@ namespace Switchex {
 
 			Globals.downloadVersion = File.ReadAllText(versionFile);
 
-			if(CompareVersions(currentVersion, Globals.downloadVersion) >= 0) {
+			if(Globals.CompareVersions(currentVersion, Globals.downloadVersion) >= 0) {
 				if(Globals.blnUpdates) {
 					MessageBox.Show("There are no updates available at this time.", "Updates");
 				}
 			}
-			else if(CompareVersions(currentVersion, Globals.downloadVersion) == -1) {
+			else if(Globals.CompareVersions(currentVersion, Globals.downloadVersion) == -1) {
 				webClient.DownloadFile("http://www.abluescarab.us/updates/switchex/" + Globals.downloadVersion + ".txt", readmeFile);
 				frmConfirmUpdate.ShowDialog();
 			}
@@ -532,17 +532,36 @@ namespace Switchex {
 				using(SqlCeConnection conn = new SqlCeConnection(Properties.Settings.Default.switchexConnectionString)) {
 					using(DataTable dt = new DataTable()) {
 						using(SqlCeDataAdapter adapter = new SqlCeDataAdapter("SELECT * FROM Servers", conn)) {
+							Globals.servers.Clear(); 
 							dgvServers.Rows.Clear();
 							adapter.Fill(dt);
 
 							foreach(DataRow row in dt.Rows) {
-								if(cmbProfiles.Text != "All") {
-									if(row.ItemArray.Contains(cmbProfiles.Text) || (row.ItemArray[7]).ToString() == "") {
-										dgvServers.Rows.Add(null, row.ItemArray[1], row.ItemArray[2], row.ItemArray[3], row.ItemArray[4], row.ItemArray[5], row.ItemArray[6], row.ItemArray[7], row.ItemArray[0]);
-									}
+								Globals.servers.Add(new Server(
+									Convert.ToInt32(row.ItemArray[0]),
+									row.ItemArray[1].ToString(),
+									row.ItemArray[2].ToString(),
+									row.ItemArray[3].ToString(),
+									row.ItemArray[4].ToString(),
+									Convert.ToInt32(row.ItemArray[5]),
+									row.ItemArray[6].ToString(),
+									row.ItemArray[7].ToString()));
+							}
+
+							if(cmbProfiles.Text != "All") {
+								var query = Globals.servers.Where(item => item.ServerProfile == cmbProfiles.Text);
+
+								foreach(Server server in query) {
+									dgvServers.Rows.Add(null, server.ServerName, server.ServerIP,
+										server.ServerWebsite, server.ServerPatch, server.ServerRating,
+										server.ServerNotes, server.ServerProfile, server.ServerID);
 								}
-								else {
-									dgvServers.Rows.Add(null, row.ItemArray[1], row.ItemArray[2], row.ItemArray[3], row.ItemArray[4], row.ItemArray[5], row.ItemArray[6], row.ItemArray[7], row.ItemArray[0]);
+							}
+							else {
+								foreach(Server server in Globals.servers) {
+									dgvServers.Rows.Add(null, server.ServerName, server.ServerIP,
+										server.ServerWebsite, server.ServerPatch, server.ServerRating,
+										server.ServerNotes, server.ServerProfile, server.ServerID);
 								}
 							}
 						}
@@ -848,21 +867,6 @@ namespace Switchex {
 			catch {
 				return false;
 			}
-		}
-
-		/// <summary>
-		/// Compare the update version and current product version.
-		/// </summary>
-		/// <param name="versionStart">Current version</param>
-		/// <param name="versionCompare">New version</param>
-		/// <returns></returns>
-		public int CompareVersions(string versionStart, string versionCompare) {
-			Version vStart = new Version(versionStart);
-			Version vComp = new Version(versionCompare);
-
-			int answer = vStart.CompareTo(vComp);
-
-			return answer;
 		}
 		#endregion
 	}

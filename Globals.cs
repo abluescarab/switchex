@@ -19,6 +19,7 @@ namespace Switchex {
 		public static frmError frmError = new frmError();
 
 		public static List<Profile> profiles = new List<Profile>();
+		public static List<Server> servers = new List<Server>();
 
 		public enum FileAction {
 			CreateFolder,
@@ -147,6 +148,21 @@ namespace Switchex {
 			catch(Exception ex) {
 				Globals.frmError.ShowDialog(ex);
 			}
+		}
+
+		/// <summary>
+		/// Compare the update version and current product version.
+		/// </summary>
+		/// <param name="versionStart">Current version</param>
+		/// <param name="versionCompare">New version</param>
+		/// <returns></returns>
+		public static int CompareVersions(string versionStart, string versionCompare) {
+			Version vStart = new Version(versionStart);
+			Version vComp = new Version(versionCompare);
+
+			int answer = vStart.CompareTo(vComp);
+
+			return answer;
 		}
 	}
 }
